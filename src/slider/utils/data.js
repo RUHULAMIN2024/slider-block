@@ -1,3 +1,2 @@
-export const prefix = 'raasl';
+export const prefix = 'raslb';
 export const pluginSlug = 'ruhulamin-slider-block';
-export const pricingPage = 'https://bplugins.com/pricing/';

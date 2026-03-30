@@ -4,12 +4,11 @@ import { produce } from 'immer';
 
 import { Label, Background, ColorControl, ColorsControl } from '../../../../../../bpl-tools/Components';
 import { BorderControl } from '../../../../../../bpl-tools/Components/Deprecated';
-import { BControlPro } from '../../../../../../bpl-tools/ProControls';
 import { primaryColor, secondaryColor } from '../../../../../../bpl-tools/utils/data';
 
 import { getPosByPos } from '../../../utils/functions';
 
-const ItemSettings = ({ attributes, setAttributes, clientId, arrKey, index, setActiveIndex = false, premiumProps }) => {
+const ItemSettings = ({ attributes, setAttributes, clientId, arrKey, index, setActiveIndex = false }) => {
 	const items = attributes[arrKey];
 	const { background, border = {}, title, titleColor, description, descColor, btnText, btnLink, btnColors, btnHovColors } = items[index];
 
@@ -25,7 +24,7 @@ const ItemSettings = ({ attributes, setAttributes, clientId, arrKey, index, setA
 	return <>
 		<Background label={__('Background', 'ruhulamin-slider-block')} value={background} onChange={val => updateSlide(index, 'background', val)} defaults={{ color: '#00000080' }} />
 
-		<BControlPro label={__('Border:', 'ruhulamin-slider-block')} value={border} onChange={val => updateSlide(index, 'border', val)} {...premiumProps} Component={BorderControl} />
+		<BorderControl label={__('Border:', 'ruhulamin-slider-block')} value={border} onChange={val => updateSlide(index, 'border', val)} />
 
 		<PanelRow>
 			<Label className=''>{__('Content Position', 'ruhulamin-slider-block')}</Label>
@@ -64,7 +63,7 @@ const ItemSettings = ({ attributes, setAttributes, clientId, arrKey, index, setA
 
 		<ColorsControl label={__('Button Colors:', 'ruhulamin-slider-block')} value={btnColors} onChange={val => updateSlide(index, 'btnColors', val)} defaults={{ color: '#fff', bg: primaryColor }} />
 
-		<BControlPro label={__('Button Hover Colors:', 'ruhulamin-slider-block')} value={btnHovColors} onChange={val => updateSlide(index, 'btnHovColors', val)} defaults={{ color: '#fff', bg: secondaryColor }} {...premiumProps} Component={ColorsControl} />
+		<ColorsControl label={__('Button Hover Colors:', 'ruhulamin-slider-block')} value={btnHovColors} onChange={val => updateSlide(index, 'btnHovColors', val)} defaults={{ color: '#fff', bg: secondaryColor }} />
 	</>
 }
 export default ItemSettings;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; // eslint-disable-line no-unused-vars
 import { __ } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
@@ -6,15 +6,13 @@ import { PanelBody, PanelRow, RangeControl, ToolbarGroup, ToolbarButton, Dashico
 
 import { Label, Background, ColorControl, Device, Typography, ItemsPanel } from '../../../../../../bpl-tools/Components';
 import { BorderControl, SpaceControl } from '../../../../../../bpl-tools/Components/Deprecated';
-import { BControlPro, SelectControlPro } from '../../../../../../bpl-tools/ProControls';
+import { SelectControl } from '@wordpress/components';
 import { pxUnit, perUnit, emUnit, vhUnit } from '../../../../../../bpl-tools/utils/options';
 import { primaryColor, secondaryColor } from '../../../../../../bpl-tools/utils/data';
 
 
-// import { pluginSlug } from '../../../utils/data';
-import { effects, ProFeatures, tabs } from '../../../utils/options';
+import { effects, tabs } from '../../../utils/options';
 import ItemSettings from './ItemSettings';
-import ProModal from '../../../utils/proModal/proModal';
 
 const defaultChildPositions = [
 	{
@@ -37,10 +35,8 @@ const defaultChildPositions = [
 	}
 ];
 
-const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveIndex, isPremium, device }) => {
+const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveIndex, device }) => {
 	const { slides = [], columns, columnGap, sliderWidth, sliderHeight, isLoop, isTouchMove, speed, isAutoplay, autoplayOptions = {}, freeModeOptions = {}, effect, keyboardOptions = {}, isMousewheel = false, isPage, pageOnDevice = {}, isPageClickable, isPageDynamic, isPrevNext, prevNextOnDevice = {}, sliderBG = {}, sliderPadding = {}, pageColor, pageWidth, pageHeight, pageBorder, prevNextColor, sliderAlign, isTitle, titleTypo, isDesc, descTypo, isBtn, linkTarget, btnTypo, btnPadding, btnBorder } = attributes;
-
-	const [isProModalOpen, setIsProModalOpen] = useState(false);
 
 	const newSlide = {
 		background: { color: '#00000080' },
@@ -64,24 +60,19 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 		setActiveIndex(slides.length);
 	}
 
-	const premiumProps = {
-		isPremium,
-		setIsProModalOpen
-	};
-
 	const panelBodyIF = {
 		className: 'bPlPanelBody',
 		initialOpen: false
 	}
 
-	const itemsProps = { attributes, setAttributes, clientId, arrKey: 'slides', activeIndex, setActiveIndex, premiumProps }
+	const itemsProps = { attributes, setAttributes, clientId, arrKey: 'slides', activeIndex, setActiveIndex }
 
 	return <>
 		<InspectorControls>
 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={tabs}>{tab => <>
 				{'general' === tab.name && <>
 					<PanelBody className='bPlPanelBody' title={__('Slides', 'ruhulamin-slider-block')}>
-						<ItemsPanel {...itemsProps} newItem={newSlide} ItemSettings={ItemSettings} itemLabel='Slide' design={isPremium ? 'sortable' : 'all'} />
+						<ItemsPanel {...itemsProps} newItem={newSlide} ItemSettings={ItemSettings} itemLabel='Slide' design='sortable' />
 					</PanelBody>
 
 
@@ -104,7 +95,7 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 
 				{'options' === tab.name && <>
 					<PanelBody className='bPlPanelBody' title={__('Basic Options', 'ruhulamin-slider-block')}>
-						<BControlPro label={__('Enable Loop', 'ruhulamin-slider-block')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} {...premiumProps} Component={ToggleControl} />
+						<ToggleControl label={__('Enable Loop', 'ruhulamin-slider-block')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} />
 
 						<ToggleControl className='mt10' label={__('Enable Touch Move', 'ruhulamin-slider-block')} checked={isTouchMove} onChange={val => setAttributes({ isTouchMove: val })} />
 						<small>{__('Switch slide with grab in anywhere in slide', 'ruhulamin-slider-block')}</small>
@@ -121,35 +112,35 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 						<small>{__('Autoplay will not work in backend', 'ruhulamin-slider-block')}</small>
 
 						{isAutoplay && <>
-							<BControlPro className='mt20' label={__('Delay (s):', 'ruhulamin-slider-block')} value={autoplayOptions.delay} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, delay: val } })} min={0} max={10} step={.05} beforeIcon='visibility' {...premiumProps} Component={RangeControl} />
+							<RangeControl className='mt20' label={__('Delay (s):', 'ruhulamin-slider-block')} value={autoplayOptions.delay} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, delay: val } })} min={0} max={10} step={.05} beforeIcon='visibility' />
 							<small>{__('Smaller delay value will be autoplay faster', 'ruhulamin-slider-block')}</small>
 
-							<BControlPro className='mt20' label={__('Disable on Interaction', 'ruhulamin-slider-block')} checked={autoplayOptions.disableOnInteraction} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, disableOnInteraction: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt20' label={__('Disable on Interaction', 'ruhulamin-slider-block')} checked={autoplayOptions.disableOnInteraction} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, disableOnInteraction: val } })} />
 
-							<BControlPro className='mt10' label={__('Pause on Mouse Enter', 'ruhulamin-slider-block')} checked={autoplayOptions.pauseOnMouseEnter} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, pauseOnMouseEnter: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Pause on Mouse Enter', 'ruhulamin-slider-block')} checked={autoplayOptions.pauseOnMouseEnter} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, pauseOnMouseEnter: val } })} />
 							<small>{__(`If 'Disable on Interaction' is also enabled, it will stop autoplay instead of pause`, 'ruhulamin-slider-block')}</small>
 
-							<BControlPro className='mt10' label={__('Reverse Direction', 'ruhulamin-slider-block')} checked={autoplayOptions.reverseDirection} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, reverseDirection: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Reverse Direction', 'ruhulamin-slider-block')} checked={autoplayOptions.reverseDirection} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, reverseDirection: val } })} />
 
-							<BControlPro className='mt10' label={__('Stop on Last Slide', 'ruhulamin-slider-block')} checked={autoplayOptions.stopOnLastSlide} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, stopOnLastSlide: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Stop on Last Slide', 'ruhulamin-slider-block')} checked={autoplayOptions.stopOnLastSlide} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, stopOnLastSlide: val } })} />
 						</>}
 					</PanelBody>
 
 
 					<PanelBody title={__('Free Mode', 'ruhulamin-slider-block')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Free Mode', 'ruhulamin-slider-block')} checked={freeModeOptions.enabled} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, enabled: val } })} {...premiumProps} Component={ToggleControl} />
+						<ToggleControl label={__('Enable Free Mode', 'ruhulamin-slider-block')} checked={freeModeOptions.enabled} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, enabled: val } })} />
 						<small>{__('Smooth Scrolling with dragging the slide', 'ruhulamin-slider-block')}</small>
 						<br />
 						<small>{__('Enable Touch Move to use Free Mode', 'ruhulamin-slider-block')}</small>
 
-						{freeModeOptions.enabled && <BControlPro className='mt10' label={__('Sticky', 'ruhulamin-slider-block')} checked={freeModeOptions.sticky} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, sticky: val } })} {...premiumProps} Component={ToggleControl} />}
+						{freeModeOptions.enabled && <ToggleControl className='mt10' label={__('Sticky', 'ruhulamin-slider-block')} checked={freeModeOptions.sticky} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, sticky: val } })} />}
 					</PanelBody>
 
 
 					<PanelBody title={__('Effects', 'ruhulamin-slider-block')} {...panelBodyIF}>
 						<PanelRow>
 							<Label className=''>{__('Effect:', 'ruhulamin-slider-block')}</Label>
-							<SelectControlPro value={effect}
+							<SelectControl value={effect}
 								onChange={val => {
 									setAttributes({ effect: val });
 									val === 'slide' && setAttributes({
@@ -196,8 +187,6 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 									});
 								}}
 								options={effects}
-								proValues={['cube', 'coverflow', 'flip', 'cards']}
-								{...premiumProps}
 							/>
 						</PanelRow>
 						<small>{__('To work fade, cube, creative, flip & cards effects properly, set single column per view.', 'ruhulamin-slider-block')}</small>
@@ -207,12 +196,12 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 
 
 					<PanelBody title={__('Keyboard Control', 'ruhulamin-slider-block')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Keyboard Control', 'ruhulamin-slider-block')} checked={keyboardOptions.enabled} onChange={val => setAttributes({ keyboardOptions: { ...keyboardOptions, enabled: val } })}{...premiumProps} Component={ToggleControl} />
+						<ToggleControl label={__('Enable Keyboard Control', 'ruhulamin-slider-block')} checked={keyboardOptions.enabled} onChange={val => setAttributes({ keyboardOptions: { ...keyboardOptions, enabled: val } })} />
 					</PanelBody>
 
 
 					<PanelBody title={__('Mousewheel', 'ruhulamin-slider-block')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Slide on Mousewheel', 'ruhulamin-slider-block')} checked={isMousewheel} onChange={val => setAttributes({ isMousewheel: val })}{...premiumProps} Component={ToggleControl} />
+						<ToggleControl label={__('Enable Slide on Mousewheel', 'ruhulamin-slider-block')} checked={isMousewheel} onChange={val => setAttributes({ isMousewheel: val })} />
 					</PanelBody>
 
 
@@ -220,13 +209,13 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 						<ToggleControl label={__('Show Pagination', 'ruhulamin-slider-block')} checked={isPage} onChange={val => setAttributes({ isPage: val })} />
 
 						{isPage && <>
-							<BControlPro className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={pageOnDevice?.tablet} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={pageOnDevice?.tablet} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, tablet: val } })} />
 
-							<BControlPro className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={pageOnDevice?.mobile} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={pageOnDevice?.mobile} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, mobile: val } })} />
 
 							<ToggleControl className='mt10' label={__('Enable Pagination Clickable', 'ruhulamin-slider-block')} checked={isPageClickable} onChange={val => setAttributes({ isPageClickable: val })} />
 
-							<BControlPro className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ruhulamin-slider-block')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ruhulamin-slider-block')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} />
 						</>}
 					</PanelBody>
 
@@ -235,9 +224,9 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 						<ToggleControl label={__('Show Preview Next Button', 'ruhulamin-slider-block')} checked={isPrevNext} onChange={val => setAttributes({ isPrevNext: val })} />
 
 						{isPrevNext && <>
-							<BControlPro className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.tablet} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.tablet} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, tablet: val } })} />
 
-							<BControlPro className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.mobile} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
+							<ToggleControl className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.mobile} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, mobile: val } })} />
 						</>}
 					</PanelBody>
 				</>}
@@ -245,9 +234,9 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 
 				{'style' === tab.name && <>
 					<PanelBody className='bPlPanelBody' title={__('Slider', 'ruhulamin-slider-block')}>
-						<BControlPro label={__('Background', 'ruhulamin-slider-block')} value={sliderBG} onChange={val => setAttributes({ sliderBG: val })} defaults={{ color: '#0000' }} {...premiumProps} Component={Background} />
+						<Background label={__('Background', 'ruhulamin-slider-block')} value={sliderBG} onChange={val => setAttributes({ sliderBG: val })} defaults={{ color: '#0000' }} />
 
-						<BControlPro className='mt20' label={__('Padding:', 'ruhulamin-slider-block')} value={sliderPadding} onChange={val => setAttributes({ sliderPadding: val })} defaults={{ vertical: '0px', horizontal: '0px' }} {...premiumProps} Component={SpaceControl} />
+						<SpaceControl className='mt20' label={__('Padding:', 'ruhulamin-slider-block')} value={sliderPadding} onChange={val => setAttributes({ sliderPadding: val })} defaults={{ vertical: '0px', horizontal: '0px' }} />
 					</PanelBody>
 
 
@@ -309,12 +298,7 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 				{ title: __('Slider in right', 'ruhulamin-slider-block'), align: 'right', icon: 'align-right' }
 			]} />
 		</BlockControls>
-		<ProModal
-        isProModalOpen={isProModalOpen}
-        setIsProModalOpen={setIsProModalOpen}
-        link="https://checkout.freemius.com/plugin/26132/plan/43189/"
-        features={ProFeatures}
-      ></ProModal>
+
 
 
 		

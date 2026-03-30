@@ -1,16 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-export const ProFeatures = [
-	"Enable infinite loop for slider.",
-	"Enable dynamic pagination bullets.",
-	"Pause autoplay on mouse hover.",
-	"Stop slider at the last slide.",
-	"Apply effects like Cube, Flip, Coverflow, & Cards.",
-	"Navigate slides using keyboard.",
-	"Show or hide navigation & pagination on different devices.",
-	"Customize slider wrapper background.",
-	"Adjust padding and spacing easily.",
-];
+
 
 
 export const effects = [

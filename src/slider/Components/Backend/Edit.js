@@ -13,9 +13,6 @@ const Edit = props => {
 	const { attributes, setAttributes, clientId, isEditorSidebarOpened } = props;
 	const { slides = [], columns, columnGap, isLoop, speed, freeModeOptions, effect, keyboardOptions, isMousewheel, isPage, isPageClickable, isPageDynamic, isPrevNext, isTitle, isDesc, isBtn } = attributes;
 
-	const isPremium = Boolean(raaslIsPremium);
-
-
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [rendered, setRendered] = useState(true);
 
@@ -71,7 +68,7 @@ const Edit = props => {
 	const SliderEl = () => <Slider attributes={attributes} initialSlide={activeIndex} isBackend={true} />
 
 	return <>
-		<Settings attributes={attributes} setAttributes={setAttributes} clientId={clientId} activeIndex={activeIndex} isPremium={isPremium} setActiveIndex={setActiveIndex} />
+		<Settings attributes={attributes} setAttributes={setAttributes} clientId={clientId} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
 
 		<div {...useBlockProps()}>
 			<Style attributes={attributes} id={id} />
