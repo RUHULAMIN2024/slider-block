@@ -1,0 +1,134 @@
+@import 'swiper/css/bundle';
+
+.wp-block-raasl-slider {
+	overflow: hidden;
+	display: grid;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.raasl {
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		max-width: 100%;
+
+		.swiper-wrapper {
+			.swiper-slide {
+				background-blend-mode: overlay;
+				display: block;
+				position: relative;
+
+				.slideContent {
+					position: absolute;
+					width: 100%;
+					max-width: 100%;
+					height: 100%;
+					text-align: center;
+					box-sizing: border-box;
+
+					.slideTitle {
+						width: auto;
+						color: #fff;
+						margin: 0;
+						position: absolute !important;
+					}
+
+					.slideDesc {
+						width: auto;
+						color: #fff;
+						margin: 0;
+						position: absolute !important;
+					}
+
+					.slideBtn {
+						width: auto;
+						display: inline-block;
+						text-decoration: none;
+						font-weight: 600;
+						transition: all .4s ease-in-out;
+						position: absolute !important;
+					}
+				}
+			}
+
+			@media only screen and (max-width: 1024px) {
+				.swiper-slide {
+					.slideContent {
+						height: auto;
+						padding: 30px 50px;
+
+						&.top-left {
+							text-align: left;
+							top: 0;
+						}
+
+						&.top-center {
+							text-align: center;
+							top: 0;
+						}
+
+						&.top-right {
+							text-align: right;
+							top: 0;
+						}
+
+						&.center-left {
+							text-align: left;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+
+						&.center-center {
+							text-align: center;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+
+						&.center-right {
+							text-align: right;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+
+						&.bottom-left {
+							text-align: left;
+							bottom: 0;
+						}
+
+						&.bottom-center {
+							text-align: center;
+							bottom: 0;
+						}
+
+						&.bottom-right {
+							text-align: right;
+							bottom: 0;
+						}
+
+						.slideTitle {
+							position: static !important;
+							margin-bottom: 15px;
+						}
+
+						.slideDesc {
+							position: static !important;
+							margin-bottom: 20px;
+						}
+
+						.slideBtn {
+							position: static !important;
+						}
+					}
+				}
+			}
+		}
+
+		.swiper-pagination {
+			.swiper-pagination-bullet:focus {
+				outline: 0;
+			}
+		}
+	}
+}

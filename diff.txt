@@ -1,0 +1,1976 @@
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/block.json" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/block.json"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/block.json"	2026-03-18 09:11:47.947310000 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/block.json"	2026-03-18 10:54:33.077978200 +0600
+@@ -1,325 +1,328 @@
+-{
+-	"apiVersion": 3,
+-	"name": "b-blocks/slider",
+-	"title": "Slider",
+-	"description": "Display image and content slider.",
+-	"category": "bBlocks",
+-	"keywords": [
+-		"content slider",
+-		"image slider",
+-		"image carousel"
+-	],
+-	"textdomain": "ra-advanced-slider",
+-	"attributes": {
+-		"align": {
+-			"type": "string",
+-			"default": ""
+-		},
+-		"slides": {
+-			"type": "array",
+-			"default": [
+-				{
+-					"background": {
+-						"color": "#00000080"
+-					},
+-					"border": {},
+-					"position": "center center",
+-					"childPositions": [
+-						{
+-							"top": 36,
+-							"right": 44.71,
+-							"bottom": 44.5,
+-							"left": 44.71
+-						},
+-						{
+-							"top": 47.5,
+-							"right": 34.67,
+-							"bottom": 52.5,
+-							"left": 34.67
+-						},
+-						{
+-							"top": 55.5,
+-							"right": 44.54,
+-							"bottom": 67,
+-							"left": 44.54
+-						}
+-					],
+-					"title": "Slide Title 1",
+-					"titleColor": "#fff",
+-					"description": "This content area describes slider 1 descriptions/details.",
+-					"descColor": "#fff",
+-					"btnText": "Button 1",
+-					"btnLink": "#",
+-					"btnColors": {
+-						"color": "#fff",
+-						"bg": "#146EF5"
+-					},
+-					"btnHovColors": {
+-						"color": "#fff",
+-						"bg": "#FF7A00"
+-					}
+-				},
+-				{
+-					"background": {
+-						"color": "#00000080"
+-					},
+-					"border": {},
+-					"position": "center center",
+-					"childPositions": [
+-						{
+-							"top": 36,
+-							"right": 44.71,
+-							"bottom": 44.5,
+-							"left": 44.71
+-						},
+-						{
+-							"top": 47.5,
+-							"right": 34.67,
+-							"bottom": 52.5,
+-							"left": 34.67
+-						},
+-						{
+-							"top": 55.5,
+-							"right": 44.54,
+-							"bottom": 67,
+-							"left": 44.54
+-						}
+-					],
+-					"title": "Slide Title 2",
+-					"titleColor": "#fff",
+-					"description": "This content area describes slider 2 descriptions/details.",
+-					"descColor": "#fff",
+-					"btnText": "Button 2",
+-					"btnLink": "#",
+-					"btnColors": {
+-						"color": "#fff",
+-						"bg": "#146EF5"
+-					},
+-					"btnHovColors": {
+-						"color": "#fff",
+-						"bg": "#FF7A00"
+-					}
+-				}
+-			]
+-		},
+-		"columns": {
+-			"type": "object",
+-			"default": {
+-				"desktop": 1,
+-				"tablet": 1,
+-				"mobile": 1
+-			}
+-		},
+-		"columnGap": {
+-			"type": "number",
+-			"default": 15
+-		},
+-		"sliderWidth": {
+-			"type": "string",
+-			"default": "100%"
+-		},
+-		"sliderHeight": {
+-			"type": "string",
+-			"default": "400px"
+-		},
+-		"sliderAlign": {
+-			"type": "string",
+-			"default": "center"
+-		},
+-		"isLoop": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"isTouchMove": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"speed": {
+-			"type": "number",
+-			"default": 1.5
+-		},
+-		"isAutoplay": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"autoplayOptions": {
+-			"type": "object",
+-			"default": {
+-				"delay": 1.5,
+-				"disableOnInteraction": false,
+-				"reverseDirection": false,
+-				"pauseOnMouseEnter": false,
+-				"stopOnLastSlide": false
+-			}
+-		},
+-		"freeModeOptions": {
+-			"type": "object",
+-			"default": {
+-				"enabled": false,
+-				"sticky": false
+-			}
+-		},
+-		"effect": {
+-			"type": "string",
+-			"default": "slide"
+-		},
+-		"keyboardOptions": {
+-			"type": "object",
+-			"default": {
+-				"enabled": false
+-			}
+-		},
+-		"isMousewheel": {
+-			"type": "boolean",
+-			"default": false
+-		},
+-		"isPage": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"pageOnDevice": {
+-			"type": "object",
+-			"default": {
+-				"tablet": true,
+-				"mobile": true
+-			}
+-		},
+-		"isPageClickable": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"isPageDynamic": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"isPrevNext": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"prevNextOnDevice": {
+-			"type": "object",
+-			"default": {
+-				"tablet": true,
+-				"mobile": true
+-			}
+-		},
+-		"sliderBG": {
+-			"type": "object",
+-			"default": {
+-				"color": "#0000"
+-			}
+-		},
+-		"sliderPadding": {
+-			"type": "object",
+-			"default": {
+-				"vertical": "0px",
+-				"horizontal": "0px"
+-			}
+-		},
+-		"pageColor": {
+-			"type": "string",
+-			"default": "#fff"
+-		},
+-		"pageWidth": {
+-			"type": "string",
+-			"default": "15px"
+-		},
+-		"pageHeight": {
+-			"type": "string",
+-			"default": "15px"
+-		},
+-		"pageBorder": {
+-			"type": "object",
+-			"default": {
+-				"radius": "50%"
+-			}
+-		},
+-		"prevNextColor": {
+-			"type": "string",
+-			"default": "#fff"
+-		},
+-		"isTitle": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"titleTypo": {
+-			"type": "object",
+-			"default": {
+-				"fontSize": {
+-					"desktop": "25px",
+-					"tablet": "22px",
+-					"mobile": "20px"
+-				}
+-			}
+-		},
+-		"isDesc": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"descTypo": {
+-			"type": "object",
+-			"default": {
+-				"fontSize": {
+-					"desktop": "15px"
+-				}
+-			}
+-		},
+-		"descColor": {
+-			"type": "string",
+-			"default": ""
+-		},
+-		"isBtn": {
+-			"type": "boolean",
+-			"default": true
+-		},
+-		"linkTarget": {
+-			"type": "string",
+-			"default": "_blank"
+-		},
+-		"btnTypo": {
+-			"type": "object",
+-			"default": {
+-				"fontSize": {
+-					"desktop": "16px"
+-				}
+-			}
+-		},
+-		"btnPadding": {
+-			"type": "object",
+-			"default": {
+-				"vertical": "12px",
+-				"horizontal": "35px"
+-			}
+-		},
+-		"btnBorder": {
+-			"type": "object",
+-			"default": {
+-				"radius": "3px"
+-			}
+-		}
+-	},
+-	"supports": {
+-		"align": [
+-			"wide",
+-			"full"
+-		],
+-		"html": false
+-	},
+-	"example": {
+-		"attributes": {
+-			"preview": true,
+-			"columns": {
+-				"desktop": 1,
+-				"tablet": 1,
+-				"mobile": 1
+-			}
+-		}
+-	},
+-	"editorScript": "file:../index.js",
+-	"style": "file:./view.css",
+-	"render": "file:./render.php",
+-	"viewScript": [
+-		"file:./view.js",
+-		"wp-util"
+-	]
+-}
+\ No newline at end of file
++{
++	"$schema": "https://schemas.wp.org/trunk/block.json",
++	"apiVersion": 3,
++	"name": "raasl/slider",
++	"version": "0.0.1",
++	"title": "Slider",
++	"description": "Display image and content slider.",
++	"category": "widgets",
++	"keywords": [
++		"content slider",
++		"image slider",
++		"image carousel"
++	],
++	"textdomain": "slider",
++	"attributes": {
++		"align": {
++			"type": "string",
++			"default": ""
++		},
++		"slides": {
++			"type": "array",
++			"default": [
++				{
++					"background": {
++						"color": "#00000080"
++					},
++					"border": {},
++					"position": "center center",
++					"childPositions": [
++						{
++							"top": 36,
++							"right": 44.71,
++							"bottom": 44.5,
++							"left": 44.71
++						},
++						{
++							"top": 47.5,
++							"right": 34.67,
++							"bottom": 52.5,
++							"left": 34.67
++						},
++						{
++							"top": 55.5,
++							"right": 44.54,
++							"bottom": 67,
++							"left": 44.54
++						}
++					],
++					"title": "Slide Title 1",
++					"titleColor": "#fff",
++					"description": "This content area describes slider 1 descriptions/details.",
++					"descColor": "#fff",
++					"btnText": "Button 1",
++					"btnLink": "#",
++					"btnColors": {
++						"color": "#fff",
++						"bg": "#146EF5"
++					},
++					"btnHovColors": {
++						"color": "#fff",
++						"bg": "#FF7A00"
++					}
++				},
++				{
++					"background": {
++						"color": "#00000080"
++					},
++					"border": {},
++					"position": "center center",
++					"childPositions": [
++						{
++							"top": 36,
++							"right": 44.71,
++							"bottom": 44.5,
++							"left": 44.71
++						},
++						{
++							"top": 47.5,
++							"right": 34.67,
++							"bottom": 52.5,
++							"left": 34.67
++						},
++						{
++							"top": 55.5,
++							"right": 44.54,
++							"bottom": 67,
++							"left": 44.54
++						}
++					],
++					"title": "Slide Title 2",
++					"titleColor": "#fff",
++					"description": "This content area describes slider 2 descriptions/details.",
++					"descColor": "#fff",
++					"btnText": "Button 2",
++					"btnLink": "#",
++					"btnColors": {
++						"color": "#fff",
++						"bg": "#146EF5"
++					},
++					"btnHovColors": {
++						"color": "#fff",
++						"bg": "#FF7A00"
++					}
++				}
++			]
++		},
++		"columns": {
++			"type": "object",
++			"default": {
++				"desktop": 1,
++				"tablet": 1,
++				"mobile": 1
++			}
++		},
++		"columnGap": {
++			"type": "number",
++			"default": 15
++		},
++		"sliderWidth": {
++			"type": "string",
++			"default": "100%"
++		},
++		"sliderHeight": {
++			"type": "string",
++			"default": "400px"
++		},
++		"sliderAlign": {
++			"type": "string",
++			"default": "center"
++		},
++		"isLoop": {
++			"type": "boolean",
++			"default": true
++		},
++		"isTouchMove": {
++			"type": "boolean",
++			"default": true
++		},
++		"speed": {
++			"type": "number",
++			"default": 1.5
++		},
++		"isAutoplay": {
++			"type": "boolean",
++			"default": true
++		},
++		"autoplayOptions": {
++			"type": "object",
++			"default": {
++				"delay": 1.5,
++				"disableOnInteraction": false,
++				"reverseDirection": false,
++				"pauseOnMouseEnter": false,
++				"stopOnLastSlide": false
++			}
++		},
++		"freeModeOptions": {
++			"type": "object",
++			"default": {
++				"enabled": false,
++				"sticky": false
++			}
++		},
++		"effect": {
++			"type": "string",
++			"default": "slide"
++		},
++		"keyboardOptions": {
++			"type": "object",
++			"default": {
++				"enabled": false
++			}
++		},
++		"isMousewheel": {
++			"type": "boolean",
++			"default": false
++		},
++		"isPage": {
++			"type": "boolean",
++			"default": true
++		},
++		"pageOnDevice": {
++			"type": "object",
++			"default": {
++				"tablet": true,
++				"mobile": true
++			}
++		},
++		"isPageClickable": {
++			"type": "boolean",
++			"default": true
++		},
++		"isPageDynamic": {
++			"type": "boolean",
++			"default": true
++		},
++		"isPrevNext": {
++			"type": "boolean",
++			"default": true
++		},
++		"prevNextOnDevice": {
++			"type": "object",
++			"default": {
++				"tablet": true,
++				"mobile": true
++			}
++		},
++		"sliderBG": {
++			"type": "object",
++			"default": {
++				"color": "#0000"
++			}
++		},
++		"sliderPadding": {
++			"type": "object",
++			"default": {
++				"vertical": "0px",
++				"horizontal": "0px"
++			}
++		},
++		"pageColor": {
++			"type": "string",
++			"default": "#fff"
++		},
++		"pageWidth": {
++			"type": "string",
++			"default": "15px"
++		},
++		"pageHeight": {
++			"type": "string",
++			"default": "15px"
++		},
++		"pageBorder": {
++			"type": "object",
++			"default": {
++				"radius": "50%"
++			}
++		},
++		"prevNextColor": {
++			"type": "string",
++			"default": "#fff"
++		},
++		"isTitle": {
++			"type": "boolean",
++			"default": true
++		},
++		"titleTypo": {
++			"type": "object",
++			"default": {
++				"fontSize": {
++					"desktop": "25px",
++					"tablet": "22px",
++					"mobile": "20px"
++				}
++			}
++		},
++		"isDesc": {
++			"type": "boolean",
++			"default": true
++		},
++		"descTypo": {
++			"type": "object",
++			"default": {
++				"fontSize": {
++					"desktop": "15px"
++				}
++			}
++		},
++		"descColor": {
++			"type": "string",
++			"default": ""
++		},
++		"isBtn": {
++			"type": "boolean",
++			"default": true
++		},
++		"linkTarget": {
++			"type": "string",
++			"default": "_blank"
++		},
++		"btnTypo": {
++			"type": "object",
++			"default": {
++				"fontSize": {
++					"desktop": "16px"
++				}
++			}
++		},
++		"btnPadding": {
++			"type": "object",
++			"default": {
++				"vertical": "12px",
++				"horizontal": "35px"
++			}
++		},
++		"btnBorder": {
++			"type": "object",
++			"default": {
++				"radius": "3px"
++			}
++		}
++	},
++	"supports": {
++		"align": [
++			"wide",
++			"full"
++		],
++		"html": false
++	},
++	"example": {
++		"attributes": {
++			"columns": {
++				"desktop": 1,
++				"tablet": 1,
++				"mobile": 1
++			}
++		}
++	},
++	"editorScript": "file:./index.js",
++	"editorStyle": "file:./index.css",
++	"style": "file:./style-index.css",
++	"viewStyle": "file:./style-index.css",
++	"render": "file:./render.php",
++	"viewScript": [
++		"file:./view.js",
++		"wp-util"
++	]
++}
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Edit.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Edit.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Edit.js"	2026-03-18 09:11:47.986901700 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Edit.js"	2026-03-18 22:09:32.241933300 +0600
+@@ -13,7 +13,8 @@
+ 	const { attributes, setAttributes, clientId, isEditorSidebarOpened } = props;
+ 	const { slides = [], columns, columnGap, isLoop, speed, freeModeOptions, effect, keyboardOptions, isMousewheel, isPage, isPageClickable, isPageDynamic, isPrevNext, isTitle, isDesc, isBtn } = attributes;
+ 
+-	const isPremium = bBlocksPremiumChecker;
++	const isPremium = Boolean(raaslIsPremium);
++
+ 
+ 	const [activeIndex, setActiveIndex] = useState(0);
+ 	const [rendered, setRendered] = useState(true);
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Settings/ItemSettings.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Settings/ItemSettings.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Settings/ItemSettings.js"	2026-03-18 09:11:47.998907000 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Settings/ItemSettings.js"	2026-03-18 21:32:07.862202400 +0600
+@@ -29,7 +29,7 @@
+ 
+ 		<PanelRow>
+ 			<Label className=''>{__('Content Position', 'ra-advanced-slider')}</Label>
+-			<AlignmentMatrixControl onChange={val => {
++			<AlignmentMatrixControl value={items[index]?.position} onChange={val => {
+ 				setAttributes({
+ 					slides: produce(items, draft => {
+ 						draft[index]['position'] = val;
+@@ -38,7 +38,7 @@
+ 				})
+ 			}} />
+ 		</PanelRow>
+-		<small>{__('You can also change the content position by dragging element.', 'ra-advanced-slider')}</small>
++		<small>{__('You can also change the content position by dragging element (Pro).', 'ra-advanced-slider')}</small>
+ 
+ 		<PanelRow className='mt20'>
+ 			<Label className=''>{__('Title:', 'ra-advanced-slider')}</Label>
+@@ -64,7 +64,7 @@
+ 
+ 		<ColorsControl label={__('Button Colors:', 'ra-advanced-slider')} value={btnColors} onChange={val => updateSlide(index, 'btnColors', val)} defaults={{ color: '#fff', bg: primaryColor }} />
+ 
+-		<ColorsControl label={__('Button Hover Colors:', 'ra-advanced-slider')} value={btnHovColors} onChange={val => updateSlide(index, 'btnHovColors', val)} defaults={{ color: '#fff', bg: secondaryColor }} />
++		<BControlPro label={__('Button Hover Colors:', 'ra-advanced-slider')} value={btnHovColors} onChange={val => updateSlide(index, 'btnHovColors', val)} defaults={{ color: '#fff', bg: secondaryColor }} {...premiumProps} Component={ColorsControl} />
+ 	</>
+ }
+ export default ItemSettings;
+\ No newline at end of file
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Settings/Settings.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Settings/Settings.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Backend/Settings/Settings.js"	2026-03-18 09:11:48.002943400 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Backend/Settings/Settings.js"	2026-03-18 21:11:35.796339100 +0600
+@@ -10,11 +10,11 @@
+ import { pxUnit, perUnit, emUnit, vhUnit } from '../../../../../../bpl-tools/utils/options';
+ import { primaryColor, secondaryColor } from '../../../../../../bpl-tools/utils/data';
+ 
+-import ProModal from '../../../../backend/ProModal/ProModal';
+ 
+-import { pluginSlug } from '../../../../utils/data';
+-import { effects, tabs } from '../../../utils/options';
++import { pluginSlug } from '../../../utils/data';
++import { effects, ProFeatures, tabs } from '../../../utils/options';
+ import ItemSettings from './ItemSettings';
++import ProModal from '../../../utils/proModal/proModal';
+ 
+ const defaultChildPositions = [
+ 	{
+@@ -80,9 +80,6 @@
+ 		<InspectorControls>
+ 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={tabs}>{tab => <>
+ 				{'general' === tab.name && <>
+-					<HelpPanel slug={pluginSlug} docsLink='https://bplugins.com/docs/content-slider-block/guides/general' />
+-
+-
+ 					<PanelBody className='bPlPanelBody' title={__('Slides', 'ra-advanced-slider')}>
+ 						<ItemsPanel {...itemsProps} newItem={newSlide} ItemSettings={ItemSettings} itemLabel='Slide' design={isPremium ? 'sortable' : 'all'} />
+ 					</PanelBody>
+@@ -107,7 +104,7 @@
+ 
+ 				{'options' === tab.name && <>
+ 					<PanelBody className='bPlPanelBody' title={__('Basic Options', 'ra-advanced-slider')}>
+-						<ToggleControl label={__('Enable Loop', 'ra-advanced-slider')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} />
++						<BControlPro label={__('Enable Loop', 'ra-advanced-slider')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} {...premiumProps} Component={ToggleControl} />
+ 
+ 						<ToggleControl className='mt10' label={__('Enable Touch Move', 'ra-advanced-slider')} checked={isTouchMove} onChange={val => setAttributes({ isTouchMove: val })} />
+ 						<small>{__('Switch slide with grab in anywhere in slide', 'ra-advanced-slider')}</small>
+@@ -229,7 +226,7 @@
+ 
+ 							<ToggleControl className='mt10' label={__('Enable Pagination Clickable', 'ra-advanced-slider')} checked={isPageClickable} onChange={val => setAttributes({ isPageClickable: val })} />
+ 
+-							<ToggleControl className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ra-advanced-slider')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} />
++							<BControlPro className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ra-advanced-slider')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} {...premiumProps} Component={ToggleControl} />
+ 						</>}
+ 					</PanelBody>
+ 
+@@ -312,41 +309,15 @@
+ 				{ title: __('Slider in right', 'ra-advanced-slider'), align: 'right', icon: 'align-right' }
+ 			]} />
+ 		</BlockControls>
++		<ProModal
++        isProModalOpen={isProModalOpen}
++        setIsProModalOpen={setIsProModalOpen}
++        // link={siteLocation}
++        features={ProFeatures}
++      ></ProModal>
+ 
+ 
+-		<ProModal isProModalOpen={isProModalOpen} setIsProModalOpen={setIsProModalOpen} block='Slider'>
+-			<li>&emsp;<strong>{__('Border: ', 'ra-advanced-slider')}</strong>{__('Border style options in every single slide.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Delay time: ', 'ra-advanced-slider')}</strong>{__('Delay time option in autoplay.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Disable on Interaction: ', 'ra-advanced-slider')}</strong>{__('Disable on Interaction option in autoplay.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Reverse Direction: ', 'ra-advanced-slider')}</strong>{__('Reverse Direction option in autoplay.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Pause on Mouse Enter: ', 'ra-advanced-slider')}</strong>{__('Pause on Mouse Enter option in autoplay.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Stop on Last Slide: ', 'ra-advanced-slider')}</strong>{__('Stop on Last Slide option in autoplay.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Free Mode: ', 'ra-advanced-slider')}</strong>{__('Free Mode option on drag slide.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Sticky: ', 'ra-advanced-slider')}</strong>{__('Sticky option in free mode.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Effects: ', 'ra-advanced-slider')}</strong>{__('Explore more effects such as Cube, Coverflow, Flip, and Cards.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Keyboard Control: ', 'ra-advanced-slider')}</strong>{__('Slide with Keyboard control.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Slide on Mousewheel: ', 'ra-advanced-slider')}</strong>{__('Slide on Mousewheel option.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Pagination Device: ', 'ra-advanced-slider')}</strong>{__('Show/Hide pagination in different devices(tablet and mobile).', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Navigation Device: ', 'ra-advanced-slider')}</strong>{__('Show/Hide navigation in different devices(tablet and mobile).', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Background: ', 'ra-advanced-slider')}</strong>{__('Background style option for slider wrapper.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Padding: ', 'ra-advanced-slider')}</strong>{__('Padding style option for slider wrapper.', 'ra-advanced-slider')}</li>
+-
+-			<li>&emsp;<strong>{__('Shortcode: ', 'ra-advanced-slider')}</strong>{__('Shortcode option to use anywhere.', 'ra-advanced-slider')}</li>
+-		</ProModal>
++		
+ 	</>;
+ };
+ export default withSelect((select) => {
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Common/Slider.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Common/Slider.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Common/Slider.js"	2026-03-18 09:11:48.017163500 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Common/Slider.js"	2026-03-18 10:27:51.602216600 +0600
+@@ -1,68 +1,84 @@
+-import { Swiper, SwiperSlide } from 'swiper/react';
+-import { Autoplay, Navigation, Pagination, EffectFade, EffectCube, EffectCreative, EffectCoverflow, EffectFlip, EffectCards } from 'swiper/modules';
+-
+-import { sanitizeHTML, sanitizeURL } from '../../../../../bpl-tools/utils/common';
+-
+-import { prefix } from '../../utils/data';
+-
+-import 'swiper/css/bundle';
+-
+-const Slider = ({ attributes, initialSlide = 0, isBackend = false }) => {
+-	const { slides = [], columns, columnGap, isLoop, isTouchMove, speed, isAutoplay, autoplayOptions, freeModeOptions = {}, effect, keyboardOptions = {}, isMousewheel = false, isPage, isPageClickable, isPageDynamic, isPrevNext, isTitle, isDesc, isBtn } = attributes;
+-	
+-	return <Swiper
+-		className={prefix}
+-		direction='horizontal'
+-		initialSlide={initialSlide}
+-		slidesPerView={columns.mobile}
+-		breakpoints={{ 576: { slidesPerView: columns.tablet }, 768: { slidesPerView: columns.desktop } }}
+-		spaceBetween={columnGap}
+-		modules={[Autoplay, Navigation, Pagination, EffectFade, EffectCube, EffectCreative, EffectCoverflow, EffectFlip, EffectCards]}
+-		loop={isLoop}
+-		allowTouchMove={isTouchMove}
+-		grabCursor={isTouchMove}
+-		speed={speed * 1000}
+-		autoplay={isAutoplay ? { ...autoplayOptions, delay: autoplayOptions.delay * 1000 } : false}
+-		freeMode={freeModeOptions}
+-		effect={effect}
+-		fadeEffect={{ crossFade: false }}
+-		cubeEffect={{ shadow: false }}
+-		creativeEffect={{
+-			prev: {
+-				shadow: true,
+-				translate: ['-120%', 0, -500],
+-			},
+-			next: {
+-				shadow: true,
+-				translate: ['120%', 0, -500],
+-			}
+-		}}
+-		keyboard={keyboardOptions}
+-		mousewheel={isMousewheel}
+-		pagination={isPage ? {
+-			clickable: isPageClickable,
+-			dynamicBullets: isPageDynamic,
+-			forceClass: true
+-		} : false}
+-		navigation={isPrevNext}
+-		allowSlidePrev={true}
+-		allowSlideNext={true}
+-		autoHeight={false}
+-		// notificationClass={null}
+-	>
+-		{slides?.map((slide, index) => {
+-			const { position, title, description, btnText, btnLink } = slide;
+-
+-			return <SwiperSlide key={index} className={`slide-${index}`}>
+-				<div className={`slideContent ${position?.split(' ')?.join('-') || 'center-center'}`}>
+-					{isTitle && title && <h2 className='slideTitle' dangerouslySetInnerHTML={{ __html: sanitizeHTML(title) }} />}
+-
+-					{isDesc && description && <p className='slideDesc' dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }} />}
+-
+-					{isBtn && btnText && <a href={isBackend ? '#' : sanitizeURL(btnLink)} className='slideBtn' dangerouslySetInnerHTML={{ __html: sanitizeHTML(btnText) }} />}
+-				</div>
+-			</SwiperSlide>
+-		})}
+-	</Swiper>
+-}
+-export default Slider;
+\ No newline at end of file
++import { Swiper, SwiperSlide } from 'swiper/react';
++import { Autoplay, Navigation, Pagination, EffectFade, EffectCube, EffectCreative, EffectCoverflow, EffectFlip, EffectCards } from 'swiper/modules';
++
++import { prefix } from '../../utils/data';
++
++import 'swiper/css/bundle';
++
++const sanitizeHTML = html => {
++	const div = document.createElement('div');
++	div.innerHTML = html;
++	return div.innerHTML;
++};
++
++const sanitizeURL = url => {
++	if (!url) return '#';
++	try {
++		const parsed = new URL(url, window.location.href);
++		if (['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol)) {
++			return url;
++		}
++	} catch (e) {
++		// fallthrough
++	}
++	return '#';
++};
++
++const Slider = ({ attributes, initialSlide = 0, isBackend = false }) => {
++	const { slides = [], columns, columnGap, isLoop, isTouchMove, speed, isAutoplay, autoplayOptions, freeModeOptions = {}, effect, keyboardOptions = {}, isMousewheel = false, isPage, isPageClickable, isPageDynamic, isPrevNext, isTitle, isDesc, isBtn } = attributes;
++
++	return <Swiper
++		className={prefix}
++		direction='horizontal'
++		initialSlide={initialSlide}
++		slidesPerView={columns.mobile}
++		breakpoints={{ 576: { slidesPerView: columns.tablet }, 768: { slidesPerView: columns.desktop } }}
++		spaceBetween={columnGap}
++		modules={[Autoplay, Navigation, Pagination, EffectFade, EffectCube, EffectCreative, EffectCoverflow, EffectFlip, EffectCards]}
++		loop={isLoop}
++		allowTouchMove={isTouchMove}
++		grabCursor={isTouchMove}
++		speed={speed * 1000}
++		autoplay={isAutoplay ? { ...autoplayOptions, delay: autoplayOptions.delay * 1000 } : false}
++		freeMode={freeModeOptions}
++		effect={effect}
++		fadeEffect={{ crossFade: false }}
++		cubeEffect={{ shadow: false }}
++		creativeEffect={{
++			prev: {
++				shadow: true,
++				translate: ['-120%', 0, -500],
++			},
++			next: {
++				shadow: true,
++				translate: ['120%', 0, -500],
++			}
++		}}
++		keyboard={keyboardOptions}
++		mousewheel={isMousewheel}
++		pagination={isPage ? {
++			clickable: isPageClickable,
++			dynamicBullets: isPageDynamic,
++			forceClass: true
++		} : false}
++		navigation={isPrevNext}
++		allowSlidePrev={true}
++		allowSlideNext={true}
++		autoHeight={false}
++	>
++		{slides?.map((slide, index) => {
++			const { position, title, description, btnText, btnLink } = slide;
++
++			return <SwiperSlide key={index} className={`slide-${index}`}>
++				<div className={`slideContent ${position?.split(' ')?.join('-') || 'center-center'}`}>
++					{isTitle && title && <h2 className='slideTitle' dangerouslySetInnerHTML={{ __html: sanitizeHTML(title) }} />}
++
++					{isDesc && description && <p className='slideDesc' dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }} />}
++
++					{isBtn && btnText && <a href={isBackend ? '#' : sanitizeURL(btnLink)} className='slideBtn' dangerouslySetInnerHTML={{ __html: sanitizeHTML(btnText) }} />}
++				</div>
++			</SwiperSlide>
++		})}
++	</Swiper>
++}
++export default Slider;
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Common/Style.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Common/Style.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/Components/Common/Style.js"	2026-03-18 09:11:48.017163500 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/Components/Common/Style.js"	2026-03-18 10:28:30.440382100 +0600
+@@ -1,127 +1,128 @@
+-import { primaryColor, secondaryColor } from '../../../../../bpl-tools/utils/data';
+-import { getBackgroundCSS, getBorderCSS, getColorsCSS, getSpaceCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
+-
+-import { prefix } from '../../utils/data';
+-const defaultChildPositions = [
+-	{
+-		top: 36,
+-		right: 44.71,
+-		bottom: 44.5,
+-		left: 44.71
+-	},
+-	{
+-		top: 47.5,
+-		right: 34.67,
+-		bottom: 52.5,
+-		left: 34.67
+-	},
+-	{
+-		top: 55.5,
+-		right: 44.54,
+-		bottom: 67,
+-		left: 44.54
+-	}
+-];
+-
+-const Style = ({ attributes, id }) => {
+-	const { slides = [], sliderWidth, sliderHeight, pageOnDevice = {}, prevNextOnDevice = {}, sliderBG = {}, sliderPadding = {}, pageColor, pageWidth, pageHeight, pageBorder, prevNextColor, sliderAlign, isTitle, titleTypo, isDesc, descTypo, isBtn, btnTypo, btnPadding, btnBorder } = attributes;
+-
+-	const mainSl = `#${id}`;
+-	const sliderSl = `${mainSl} .${prefix}`;
+-	const gSlideSl = `${sliderSl} .swiper-slide`;
+-
+-	return <style dangerouslySetInnerHTML={{
+-		__html: `
+-		${getTypoCSS('', titleTypo)?.googleFontLink}
+-		${getTypoCSS('', descTypo)?.googleFontLink}
+-		${getTypoCSS('', btnTypo)?.googleFontLink}
+-		${getTypoCSS(`${gSlideSl} .slideTitle`, titleTypo)?.styles}
+-		${getTypoCSS(`${gSlideSl} .slideDesc`, descTypo)?.styles}
+-		${getTypoCSS(`${gSlideSl} .slideBtn`, btnTypo)?.styles}
+-
+-		${mainSl}{
+-			text-align: ${sliderAlign};
+-			height: ${sliderHeight};
+-		}
+-		${sliderSl}{
+-			width: ${sliderWidth};
+-			height: ${sliderHeight};
+-			${getBackgroundCSS(sliderBG)};
+-			padding: ${getSpaceCSS(sliderPadding)};
+-		}
+-
+-		${gSlideSl} .slideBtn{
+-			padding: ${getSpaceCSS(btnPadding)};
+-			${getBorderCSS(btnBorder)}
+-		}
+-
+-		${sliderSl} .swiper-pagination .swiper-pagination-bullet{
+-			background: ${pageColor};
+-			width: ${pageWidth};
+-			height: ${pageHeight};
+-			${getBorderCSS(pageBorder)}
+-		}
+-		
+-		${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
+-			color: ${prevNextColor};
+-		}
+-
+-		@media only screen and (max-width: 1024px) {
+-			${sliderSl} .swiper-pagination{
+-				display: ${!pageOnDevice?.tablet ? 'none' : 'block'};
+-			}
+-			${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
+-				display: ${!prevNextOnDevice?.tablet ? 'none' : 'flex'};
+-			}
+-		}
+-		@media only screen and (max-width: 640px) { 
+-			${sliderSl} .swiper-pagination{
+-				display: ${!pageOnDevice?.mobile ? 'none' : 'block'};
+-			}
+-			${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
+-				display: ${!prevNextOnDevice?.mobile ? 'none' : 'flex'};
+-			}
+-		}
+-
+-		${slides.map((item, index) => {
+-			const { background, border = {}, childPositions = defaultChildPositions, title, titleColor, description, descColor, btnText, btnColors, btnHovColors } = item;
+-
+-			const totalChild = (isTitle && title ? 1 : 0) + (isDesc && description ? 1 : 0) + (isBtn && btnText ? 1 : 0);
+-
+-			const slideSl = `${mainSl} .swiper-wrapper .slide-${index}`;
+-			const contentSl = `${slideSl} .slideContent`;
+-
+-			let childElPositionCSS = '';
+-			for (let i = 0; i < totalChild; i++) {
+-				const { top, right, bottom, left } = childPositions[i] || {};
+-
+-				const posV = top > bottom ? `bottom: ${bottom}%;` : `top: ${top}%;`;
+-				const posH = left > right ? `right: ${right}%;` : `left: ${left}%;`;
+-
+-				childElPositionCSS += `${contentSl} > *:nth-child(${i + 1}){${posV}${posH}}`;
+-			}
+-
+-			return `
+-				${slideSl}{
+-					${getBackgroundCSS(background)}
+-					${getBorderCSS(border) || ''}
+-				}
+-				${slideSl} .slideTitle{
+-					color: ${titleColor || '#fff'};
+-				}
+-				${slideSl} .slideDesc{
+-					color: ${descColor || '#fff'};
+-				}
+-				${slideSl} .slideBtn{
+-					${getColorsCSS(btnColors) || `color: #fff; background: ${primaryColor};`}
+-				}
+-				${slideSl} .slideBtn:hover{
+-					${getColorsCSS(btnHovColors) || `color: #fff; background: ${secondaryColor};`}
+-				}
+-				${childElPositionCSS}
+-			`;
+-		}).join('')}
+-		`.replace(/\s+/g, ' ')
+-	}} />;
+-}
+-export default Style;
+\ No newline at end of file
++import { primaryColor, secondaryColor } from '../../../../../bpl-tools/utils/data';
++import { getBackgroundCSS, getBorderCSS, getColorsCSS, getSpaceCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
++
++import { prefix } from '../../utils/data';
++
++const defaultChildPositions = [
++	{
++		top: 36,
++		right: 44.71,
++		bottom: 44.5,
++		left: 44.71
++	},
++	{
++		top: 47.5,
++		right: 34.67,
++		bottom: 52.5,
++		left: 34.67
++	},
++	{
++		top: 55.5,
++		right: 44.54,
++		bottom: 67,
++		left: 44.54
++	}
++];
++
++const Style = ({ attributes, id }) => {
++	const { slides = [], sliderWidth, sliderHeight, pageOnDevice = {}, prevNextOnDevice = {}, sliderBG = {}, sliderPadding = {}, pageColor, pageWidth, pageHeight, pageBorder, prevNextColor, sliderAlign, isTitle, titleTypo, isDesc, descTypo, isBtn, btnTypo, btnPadding, btnBorder } = attributes;
++
++	const mainSl = `#${id}`;
++	const sliderSl = `${mainSl} .${prefix}`;
++	const gSlideSl = `${sliderSl} .swiper-slide`;
++
++	return <style dangerouslySetInnerHTML={{
++		__html: `
++		${getTypoCSS('', titleTypo)?.googleFontLink}
++		${getTypoCSS('', descTypo)?.googleFontLink}
++		${getTypoCSS('', btnTypo)?.googleFontLink}
++		${getTypoCSS(`${gSlideSl} .slideTitle`, titleTypo)?.styles}
++		${getTypoCSS(`${gSlideSl} .slideDesc`, descTypo)?.styles}
++		${getTypoCSS(`${gSlideSl} .slideBtn`, btnTypo)?.styles}
++
++		${mainSl}{
++			text-align: ${sliderAlign};
++			height: ${sliderHeight};
++		}
++		${sliderSl}{
++			width: ${sliderWidth};
++			height: ${sliderHeight};
++			${getBackgroundCSS(sliderBG)};
++			padding: ${getSpaceCSS(sliderPadding)};
++		}
++
++		${gSlideSl} .slideBtn{
++			padding: ${getSpaceCSS(btnPadding)};
++			${getBorderCSS(btnBorder)}
++		}
++
++		${sliderSl} .swiper-pagination .swiper-pagination-bullet{
++			background: ${pageColor};
++			width: ${pageWidth};
++			height: ${pageHeight};
++			${getBorderCSS(pageBorder)}
++		}
++		
++		${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
++			color: ${prevNextColor};
++		}
++
++		@media only screen and (max-width: 1024px) {
++			${sliderSl} .swiper-pagination{
++				display: ${!pageOnDevice?.tablet ? 'none' : 'block'};
++			}
++			${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
++				display: ${!prevNextOnDevice?.tablet ? 'none' : 'flex'};
++			}
++		}
++		@media only screen and (max-width: 640px) { 
++			${sliderSl} .swiper-pagination{
++				display: ${!pageOnDevice?.mobile ? 'none' : 'block'};
++			}
++			${sliderSl} .swiper-button-prev, ${sliderSl} .swiper-button-next{
++				display: ${!prevNextOnDevice?.mobile ? 'none' : 'flex'};
++			}
++		}
++
++		${slides.map((item, index) => {
++			const { background, border = {}, childPositions = defaultChildPositions, title, titleColor, description, descColor, btnText, btnColors, btnHovColors } = item;
++
++			const totalChild = (isTitle && title ? 1 : 0) + (isDesc && description ? 1 : 0) + (isBtn && btnText ? 1 : 0);
++
++			const slideSl = `${mainSl} .swiper-wrapper .slide-${index}`;
++			const contentSl = `${slideSl} .slideContent`;
++
++			let childElPositionCSS = '';
++			for (let i = 0; i < totalChild; i++) {
++				const { top, right, bottom, left } = childPositions[i] || {};
++
++				const posV = top > bottom ? `bottom: ${bottom}%;` : `top: ${top}%;`;
++				const posH = left > right ? `right: ${right}%;` : `left: ${left}%;`;
++
++				childElPositionCSS += `${contentSl} > *:nth-child(${i + 1}){${posV}${posH}}`;
++			}
++
++			return `
++				${slideSl}{
++					${getBackgroundCSS(background)}
++					${getBorderCSS(border) || ''}
++				}
++				${slideSl} .slideTitle{
++					color: ${titleColor || '#fff'};
++				}
++				${slideSl} .slideDesc{
++					color: ${descColor || '#fff'};
++				}
++				${slideSl} .slideBtn{
++					${getColorsCSS(btnColors) || `color: #fff; background: ${primaryColor};`}
++				}
++				${slideSl} .slideBtn:hover{
++					${getColorsCSS(btnHovColors) || `color: #fff; background: ${secondaryColor};`}
++				}
++				${childElPositionCSS}
++			`;
++		}).join('')}
++		`.replace(/\s+/g, ' ')
++	}} />;
++}
++export default Style;
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/editor.scss" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/editor.scss"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/editor.scss"	2026-03-18 09:11:47.951010400 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/editor.scss"	2026-03-18 10:31:49.596256000 +0600
+@@ -1,12 +1,12 @@
+-.wp-block-b-blocks-slider {
+-	.bBlocksSlider {
+-		.swiper-slide {
+-
+-			.slideTitle,
+-			.slideDesc,
+-			.slideBtn {
+-				cursor: move;
+-			}
+-		}
+-	}
+-}
+\ No newline at end of file
++.wp-block-raasl-slider {
++	.raasl {
++		.swiper-slide {
++
++			.slideTitle,
++			.slideDesc,
++			.slideBtn {
++				cursor: move;
++			}
++		}
++	}
++}
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/index.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/index.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/index.js"	2026-03-18 09:11:47.951010400 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/index.js"	2026-03-18 10:31:24.284231700 +0600
+@@ -1,33 +1,17 @@
+-import { registerBlockType, createBlock } from '@wordpress/blocks';
+-
+-import './editor.scss';
+-import metadata from './block.json';
+-import Edit from './Components/Backend/Edit';
+-import { sliderIcon } from '../utils/blocksIcon';
+-import { isBlockEnabled } from '../utils/functions';
+-
+-isBlockEnabled(metadata.name) && registerBlockType(metadata, {
+-	icon: sliderIcon,
+-
+-	transforms: {
+-		from: [
+-			{ type: 'block', blocks: ['csb/content-slider-block'], transform: attributes => createBlock('b-blocks/slider', attributes) },
+-			{ type: 'prefix', prefix: 'slider', transform: () => createBlock('b-blocks/slider') }
+-		],
+-
+-		to: [
+-			{
+-				type: 'block', blocks: ['csb/content-slider-block'], isMatch: attributes => {
+-					if (attributes) return true;
+-					return false;
+-				},
+-				transform: attributes => createBlock('csb/content-slider-block', attributes)
+-			}
+-		]
+-	},
+-
+-	// Build In Functions
+-	edit: Edit,
+-
+-	save: () => null
+-});
+\ No newline at end of file
++import { registerBlockType } from '@wordpress/blocks';
++
++import './editor.scss';
++import metadata from './block.json';
++import Edit from './Components/Backend/Edit';
++
++registerBlockType(metadata.name, {
++	icon: {
++		src: <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>
++			<path d='M2 6a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6zm2 1v10h16V7H4zm-3 4h1v2H1v-2zm21 0h1v2h-1v-2z' />
++		</svg>
++	},
++
++	edit: Edit,
++
++	save: () => null
++});
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/render.php" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/render.php"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/render.php"	2026-03-18 09:11:47.958179700 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/render.php"	2026-03-18 10:32:08.056281900 +0600
+@@ -1,10 +1,9 @@
+-<?php
+-$id = wp_unique_id( 'bBlocksSlider-' );
+-$planClass = BBlocks\Inc\Utils::isPro() ? 'pro' : 'free';
+-?>
+-<div
+-	<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() is properly escaped ?>
+-	<?php echo get_block_wrapper_attributes( [ 'class' => $planClass ] ); ?>
+-	id='<?php echo esc_attr( $id ); ?>'
+-	data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'
+-></div>
+\ No newline at end of file
++<?php
++$id = wp_unique_id( 'raasl-' );
++?>
++<div
++	<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() is properly escaped ?>
++	<?php echo get_block_wrapper_attributes(); ?>
++	id='<?php echo esc_attr( $id ); ?>'
++	data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'
++></div>
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/style.scss" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/style.scss"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/style.scss"	2026-03-18 09:11:47.965516800 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/style.scss"	2026-03-18 10:55:27.677728200 +0600
+@@ -1,132 +1,134 @@
+-.wp-block-b-blocks-slider {
+-	overflow: hidden;
+-	display: grid;
+-
+-	* {
+-		box-sizing: border-box;
+-	}
+-
+-	.bBlocksSlider {
+-		display: inline-block;
+-		position: relative;
+-		overflow: hidden;
+-		max-width: 100%;
+-
+-		.swiper-wrapper {
+-			.swiper-slide {
+-				background-blend-mode: overlay;
+-				display: block;
+-				position: relative;
+-
+-				.slideContent {
+-					position: absolute;
+-					width: 100%;
+-					max-width: 100%;
+-					height: 100%;
+-					text-align: center;
+-					box-sizing: border-box;
+-
+-					.slideTitle {
+-						width: auto;
+-						color: #fff;
+-						margin: 0;
+-						position: absolute !important;
+-					}
+-
+-					.slideDesc {
+-						width: auto;
+-						color: #fff;
+-						margin: 0;
+-						position: absolute !important;
+-					}
+-
+-					.slideBtn {
+-						width: auto;
+-						display: inline-block;
+-						text-decoration: none;
+-						font-weight: 600;
+-						transition: all .4s ease-in-out;
+-						position: absolute !important;
+-					}
+-				}
+-			}
+-
+-			@media only screen and (max-width: 1024px) {
+-				.swiper-slide {
+-					.slideContent {
+-						height: auto;
+-						padding: 30px 50px;
+-
+-						&.top-left {
+-							text-align: left;
+-							top: 0;
+-						}
+-
+-						&.top-center {
+-							text-align: center;
+-							top: 0;
+-						}
+-
+-						&.top-right {
+-							text-align: right;
+-							top: 0;
+-						}
+-
+-						&.center-left {
+-							text-align: left;
+-							top: 50%;
+-							transform: translateY(-50%);
+-						}
+-
+-						&.center-center {
+-							text-align: center;
+-							top: 50%;
+-							transform: translateY(-50%);
+-						}
+-
+-						&.center-right {
+-							text-align: right;
+-							top: 50%;
+-							transform: translateY(-50%);
+-						}
+-
+-						&.bottom-left {
+-							text-align: left;
+-							bottom: 0;
+-						}
+-
+-						&.bottom-center {
+-							text-align: center;
+-							bottom: 0;
+-						}
+-
+-						&.bottom-right {
+-							text-align: right;
+-							bottom: 0;
+-						}
+-
+-						.slideTitle {
+-							position: static !important;
+-							margin-bottom: 15px;
+-						}
+-
+-						.slideDesc {
+-							position: static !important;
+-							margin-bottom: 20px;
+-						}
+-
+-						.slideBtn {
+-							position: static !important;
+-						}
+-					}
+-				}
+-			}
+-		}
+-
+-		.swiper-pagination {
+-			.swiper-pagination-bullet:focus {
+-				outline: 0;
+-			}
+-		}
+-	}
+-}
+\ No newline at end of file
++@import 'swiper/css/bundle';
++
++.wp-block-raasl-slider {
++	overflow: hidden;
++	display: grid;
++
++	* {
++		box-sizing: border-box;
++	}
++
++	.raasl {
++		display: inline-block;
++		position: relative;
++		overflow: hidden;
++		max-width: 100%;
++
++		.swiper-wrapper {
++			.swiper-slide {
++				background-blend-mode: overlay;
++				display: block;
++				position: relative;
++
++				.slideContent {
++					position: absolute;
++					width: 100%;
++					max-width: 100%;
++					height: 100%;
++					text-align: center;
++					box-sizing: border-box;
++
++					.slideTitle {
++						width: auto;
++						color: #fff;
++						margin: 0;
++						position: absolute !important;
++					}
++
++					.slideDesc {
++						width: auto;
++						color: #fff;
++						margin: 0;
++						position: absolute !important;
++					}
++
++					.slideBtn {
++						width: auto;
++						display: inline-block;
++						text-decoration: none;
++						font-weight: 600;
++						transition: all .4s ease-in-out;
++						position: absolute !important;
++					}
++				}
++			}
++
++			@media only screen and (max-width: 1024px) {
++				.swiper-slide {
++					.slideContent {
++						height: auto;
++						padding: 30px 50px;
++
++						&.top-left {
++							text-align: left;
++							top: 0;
++						}
++
++						&.top-center {
++							text-align: center;
++							top: 0;
++						}
++
++						&.top-right {
++							text-align: right;
++							top: 0;
++						}
++
++						&.center-left {
++							text-align: left;
++							top: 50%;
++							transform: translateY(-50%);
++						}
++
++						&.center-center {
++							text-align: center;
++							top: 50%;
++							transform: translateY(-50%);
++						}
++
++						&.center-right {
++							text-align: right;
++							top: 50%;
++							transform: translateY(-50%);
++						}
++
++						&.bottom-left {
++							text-align: left;
++							bottom: 0;
++						}
++
++						&.bottom-center {
++							text-align: center;
++							bottom: 0;
++						}
++
++						&.bottom-right {
++							text-align: right;
++							bottom: 0;
++						}
++
++						.slideTitle {
++							position: static !important;
++							margin-bottom: 15px;
++						}
++
++						.slideDesc {
++							position: static !important;
++							margin-bottom: 20px;
++						}
++
++						.slideBtn {
++							position: static !important;
++						}
++					}
++				}
++			}
++		}
++
++		.swiper-pagination {
++			.swiper-pagination-bullet:focus {
++				outline: 0;
++			}
++		}
++	}
++}
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/data.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/data.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/data.js"	2026-03-18 09:11:48.039147900 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/data.js"	2026-03-18 15:06:14.734131500 +0600
+@@ -1 +1,3 @@
+-export const prefix = 'bBlocksSlider';
+\ No newline at end of file
++export const prefix = 'raasl';
++export const pluginSlug = 'ra-advanced-slider';
++export const pricingPage = 'https://bplugins.com/pricing/';
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/functions.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/functions.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/functions.js"	2026-03-18 09:11:48.043496000 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/functions.js"	2026-03-18 10:27:23.370603000 +0600
+@@ -1,167 +1,104 @@
+-export const calcPercentage = (child, parent) => 100 * parseFloat(child / parent);
+-export const elWidth = el => parseInt(el?.clientWidth);
+-export const elHeight = el => parseInt(el?.clientHeight);
+-
+-export const getPosByPos = (id, index, pos) => {
+-	const contentEl = document.querySelector(`#${id} .swiper-wrapper .slide-${index} .slideContent`);
+-	const childEls = contentEl?.children || [];
+-
+-	if (childEls?.length) {
+-		const childLen = childEls.length;
+-
+-		const result = [];
+-
+-		for (let i = 0; i < childLen; i++) {
+-			const getChildWidth = (ind = i) => calcPercentage(elWidth(childEls[ind]), elWidth(contentEl));
+-			const getChildHeight = (ind = i) => calcPercentage(elHeight(childEls[ind]), elHeight(contentEl));
+-			const cChildWidth = getChildWidth(i);
+-			const cChildHeight = getChildHeight(i);
+-
+-			if (0 < cChildWidth && 0 < cChildHeight && isFinite(cChildWidth) && isFinite(cChildHeight)) {
+-				const itemHWS = ind => ind >= 0 ? getChildHeight(ind) + 3 : 0;
+-				const vSpace = 11;
+-				const hSpace = 5.8;
+-
+-				let prevItemsHeight = 0;
+-				for (let j = 0; j < i; j++) {
+-					prevItemsHeight += itemHWS(j);
+-				}
+-
+-				let nextItemsHeight = 0;
+-				for (let j = childLen - 1; j > i; j--) {
+-					nextItemsHeight += itemHWS(j);
+-				}
+-
+-				const topTop = vSpace + prevItemsHeight;
+-				const topBottom = 100 - (vSpace + cChildHeight + prevItemsHeight);
+-
+-				const bottomTop = 100 - (vSpace + cChildHeight + nextItemsHeight);
+-				const bottomBottom = vSpace + nextItemsHeight;
+-
+-				const leftRightLong = 100 - (cChildWidth + hSpace);
+-				const leftRightCenter = 50 - (cChildWidth / 2);
+-
+-				const centerTop = childLen === 3 ?
+-					(i === 1 ?
+-						50 - (cChildHeight / 2) :
+-						(i === 2 ?
+-							50 + (getChildHeight(1) / 2) + 3 :
+-							50 - (getChildHeight(1) / 2) - 3 - cChildHeight
+-						)
+-					) :
+-					(childLen === 2 ?
+-						(i === 1 ?
+-							50 + 1.5 :
+-							50 - 1.5 - cChildHeight
+-						) :
+-						50 - (cChildHeight / 2)
+-					);
+-
+-				const centerBottom = childLen === 3 ?
+-					(i === 1 ?
+-						50 + (cChildHeight / 2) :
+-						(i === 2 ?
+-							50 + (getChildHeight(1) / 2) + 3 + cChildHeight :
+-							50 - (getChildHeight(1) / 2) - 3
+-						)
+-					) :
+-					(childLen === 2 ?
+-						(i === 1 ?
+-							50 + 1.5 + cChildHeight :
+-							50 - 1.5
+-						) :
+-						50 + (cChildHeight / 2)
+-					);
+-
+-				const topLeft = {
+-					top: topTop,
+-					right: leftRightLong,
+-					bottom: topBottom,
+-					left: hSpace
+-				};
+-				const topCenter = {
+-					top: topTop,
+-					right: leftRightCenter,
+-					bottom: topBottom,
+-					left: leftRightCenter
+-				};
+-				const topRight = {
+-					top: topTop,
+-					right: hSpace,
+-					bottom: topBottom,
+-					left: leftRightLong
+-				};
+-
+-				const centerLeft = {
+-					top: centerTop,
+-					right: leftRightLong,
+-					bottom: centerBottom,
+-					left: hSpace
+-				}
+-				const centerCenter = {
+-					top: centerTop,
+-					right: leftRightCenter,
+-					bottom: centerBottom,
+-					left: leftRightCenter
+-				}
+-				const centerRight = {
+-					top: centerTop,
+-					right: hSpace,
+-					bottom: centerBottom,
+-					left: leftRightLong
+-				}
+-
+-				const bottomLeft = {
+-					top: bottomTop,
+-					right: leftRightLong,
+-					bottom: bottomBottom,
+-					left: hSpace
+-				};
+-				const bottomCenter = {
+-					top: bottomTop,
+-					right: leftRightCenter,
+-					bottom: bottomBottom,
+-					left: leftRightCenter
+-				};
+-				const bottomRight = {
+-					top: bottomTop,
+-					right: hSpace,
+-					bottom: bottomBottom,
+-					left: leftRightLong
+-				};
+-
+-				switch (pos) {
+-					case 'top left':
+-						result.push(topLeft);
+-						break;
+-					case 'top center':
+-						result.push(topCenter);
+-						break;
+-					case 'top right':
+-						result.push(topRight);
+-						break;
+-					case 'center left':
+-						result.push(centerLeft);
+-						break;
+-					case 'center center':
+-						result.push(centerCenter);
+-						break;
+-					case 'center right':
+-						result.push(centerRight);
+-						break;
+-					case 'bottom left':
+-						result.push(bottomLeft);
+-						break;
+-					case 'bottom center':
+-						result.push(bottomCenter);
+-						break;
+-					case 'bottom right':
+-						result.push(bottomRight);
+-						break;
+-				}
+-			}
+-		}
+-
+-		return result;
+-	}
+-}
+\ No newline at end of file
++export const calcPercentage = (child, parent) => 100 * parseFloat(child / parent);
++export const elWidth = el => parseInt(el?.clientWidth);
++export const elHeight = el => parseInt(el?.clientHeight);
++
++export const getPosByPos = (id, index, pos) => {
++	const contentEl = document.querySelector(`#${id} .swiper-wrapper .slide-${index} .slideContent`);
++	const childEls = contentEl?.children || [];
++
++	if (childEls?.length) {
++		const childLen = childEls.length;
++
++		const result = [];
++
++		for (let i = 0; i < childLen; i++) {
++			const getChildWidth = (ind = i) => calcPercentage(elWidth(childEls[ind]), elWidth(contentEl));
++			const getChildHeight = (ind = i) => calcPercentage(elHeight(childEls[ind]), elHeight(contentEl));
++			const cChildWidth = getChildWidth(i);
++			const cChildHeight = getChildHeight(i);
++
++			if (0 < cChildWidth && 0 < cChildHeight && isFinite(cChildWidth) && isFinite(cChildHeight)) {
++				const itemHWS = ind => ind >= 0 ? getChildHeight(ind) + 3 : 0;
++				const vSpace = 11;
++				const hSpace = 5.8;
++
++				let prevItemsHeight = 0;
++				for (let j = 0; j < i; j++) {
++					prevItemsHeight += itemHWS(j);
++				}
++
++				let nextItemsHeight = 0;
++				for (let j = childLen - 1; j > i; j--) {
++					nextItemsHeight += itemHWS(j);
++				}
++
++				const topTop = vSpace + prevItemsHeight;
++				const topBottom = 100 - (vSpace + cChildHeight + prevItemsHeight);
++
++				const bottomTop = 100 - (vSpace + cChildHeight + nextItemsHeight);
++				const bottomBottom = vSpace + nextItemsHeight;
++
++				const leftRightLong = 100 - (cChildWidth + hSpace);
++				const leftRightCenter = 50 - (cChildWidth / 2);
++
++				const centerTop = childLen === 3 ?
++					(i === 1 ?
++						50 - (cChildHeight / 2) :
++						(i === 2 ?
++							50 + (getChildHeight(1) / 2) + 3 :
++							50 - (getChildHeight(1) / 2) - 3 - cChildHeight
++						)
++					) :
++					(childLen === 2 ?
++						(i === 1 ?
++							50 + 1.5 :
++							50 - 1.5 - cChildHeight
++						) :
++						50 - (cChildHeight / 2)
++					);
++
++				const centerBottom = childLen === 3 ?
++					(i === 1 ?
++						50 + (cChildHeight / 2) :
++						(i === 2 ?
++							50 + (getChildHeight(1) / 2) + 3 + cChildHeight :
++							50 - (getChildHeight(1) / 2) - 3
++						)
++					) :
++					(childLen === 2 ?
++						(i === 1 ?
++							50 + 1.5 + cChildHeight :
++							50 - 1.5
++						) :
++						50 + (cChildHeight / 2)
++					);
++
++				const topLeft = { top: topTop, right: leftRightLong, bottom: topBottom, left: hSpace };
++				const topCenter = { top: topTop, right: leftRightCenter, bottom: topBottom, left: leftRightCenter };
++				const topRight = { top: topTop, right: hSpace, bottom: topBottom, left: leftRightLong };
++
++				const centerLeft = { top: centerTop, right: leftRightLong, bottom: centerBottom, left: hSpace };
++				const centerCenter = { top: centerTop, right: leftRightCenter, bottom: centerBottom, left: leftRightCenter };
++				const centerRight = { top: centerTop, right: hSpace, bottom: centerBottom, left: leftRightLong };
++
++				const bottomLeft = { top: bottomTop, right: leftRightLong, bottom: bottomBottom, left: hSpace };
++				const bottomCenter = { top: bottomTop, right: leftRightCenter, bottom: bottomBottom, left: leftRightCenter };
++				const bottomRight = { top: bottomTop, right: hSpace, bottom: bottomBottom, left: leftRightLong };
++
++				switch (pos) {
++					case 'top left': result.push(topLeft); break;
++					case 'top center': result.push(topCenter); break;
++					case 'top right': result.push(topRight); break;
++					case 'center left': result.push(centerLeft); break;
++					case 'center center': result.push(centerCenter); break;
++					case 'center right': result.push(centerRight); break;
++					case 'bottom left': result.push(bottomLeft); break;
++					case 'bottom center': result.push(bottomCenter); break;
++					case 'bottom right': result.push(bottomRight); break;
++				}
++			}
++		}
++
++		return result;
++	}
++}
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/options.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/options.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/utils/options.js"	2026-03-18 09:11:48.046520000 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/utils/options.js"	2026-03-18 21:29:28.039442700 +0600
+@@ -1,17 +1,30 @@
+-import { __ } from '@wordpress/i18n';
+-
+-export const effects = [
+-	{ label: __('Slide', 'content-slider-block'), value: 'slide' },
+-	{ label: __('Fade', 'content-slider-block'), value: 'fade' },
+-	{ label: __('Cube', 'content-slider-block'), value: 'cube' },
+-	{ label: __('Creative', 'content-slider-block'), value: 'creative' },
+-	{ label: __('Coverflow', 'content-slider-block'), value: 'coverflow' },
+-	{ label: __('Flip', 'content-slider-block'), value: 'flip' },
+-	{ label: __('Cards', 'content-slider-block'), value: 'cards' }
+-];
+-
+-export const tabs = [
+-	{ name: 'general', title: __('General', 'ra-advanced-slider') },
+-	{ name: 'options', title: __('Options', 'ra-advanced-slider') },
+-	{ name: 'style', title: __('Style', 'ra-advanced-slider') }
+-]
+\ No newline at end of file
++import { __ } from '@wordpress/i18n';
++
++export const ProFeatures = [
++	"Enable infinite loop for slider.",
++	"Enable dynamic pagination bullets.",
++	"Pause autoplay on mouse hover.",
++	"Stop slider at the last slide.",
++	"Apply effects like Cube, Flip, Coverflow, & Cards.",
++	"Navigate slides using keyboard.",
++	"Show or hide navigation & pagination on different devices.",
++	"Customize slider wrapper background.",
++	"Adjust padding and spacing easily.",
++];
++
++
++export const effects = [
++	{ label: __('Slide', 'ra-advanced-slider'), value: 'slide' },
++	{ label: __('Fade', 'ra-advanced-slider'), value: 'fade' },
++	{ label: __('Cube', 'ra-advanced-slider'), value: 'cube' },
++	{ label: __('Creative', 'ra-advanced-slider'), value: 'creative' },
++	{ label: __('Coverflow', 'ra-advanced-slider'), value: 'coverflow' },
++	{ label: __('Flip', 'ra-advanced-slider'), value: 'flip' },
++	{ label: __('Cards', 'ra-advanced-slider'), value: 'cards' }
++];
++
++export const tabs = [
++	{ name: 'general', title: __('General', 'ra-advanced-slider') },
++	{ name: 'options', title: __('Options', 'ra-advanced-slider') },
++	{ name: 'style', title: __('Style', 'ra-advanced-slider') }
++];
+Only in 'c:\Users\ruhul\Local Sites\ruhul-amin\app\public\wp-content\plugins\slider\src\slider/utils': proModal
+diff -ur "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/view.js" "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/view.js"
+--- "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\b-blocks\\src\\slider/view.js"	2026-03-18 09:11:47.971062700 +0600
++++ "c:\\Users\\ruhul\\Local Sites\\ruhul-amin\\app\\public\\wp-content\\plugins\\slider\\src\\slider/view.js"	2026-03-18 10:54:15.258422300 +0600
+@@ -1,22 +1,18 @@
+-import { createRoot } from 'react-dom/client';
+-
+-import 'swiper/css';
+-import 'swiper/css/navigation';
+-import 'swiper/css/pagination';
+-import './style.scss';
+-import Slider from './Components/Common/Slider';
+-import Style from './Components/Common/Style';
+-
+-document.addEventListener('DOMContentLoaded', () => {
+-	const sliderEls = document.querySelectorAll('.wp-block-b-blocks-slider');
+-	sliderEls.forEach(sliderEl => {
+-		const attributes = JSON.parse(sliderEl.dataset.attributes);
+-
+-		createRoot(sliderEl).render(<>
+-			<Style attributes={attributes} id={sliderEl.id} />
+-			<Slider attributes={attributes} />
+-		</>);
+-
+-		sliderEl?.removeAttribute('data-attributes');
+-	});
+-});
+\ No newline at end of file
++import { createRoot } from 'react-dom/client';
++
++import Slider from './Components/Common/Slider';
++import Style from './Components/Common/Style';
++
++document.addEventListener('DOMContentLoaded', () => {
++	const sliderEls = document.querySelectorAll('.wp-block-raasl-slider');
++	sliderEls.forEach(sliderEl => {
++		const attributes = JSON.parse(sliderEl.dataset.attributes);
++
++		createRoot(sliderEl).render(<>
++			<Style attributes={attributes} id={sliderEl.id} />
++			<Slider attributes={attributes} />
++		</>);
++
++		sliderEl?.removeAttribute('data-attributes');
++	});
++});

@@ -1,0 +1,36 @@
+{
+	"name": "ruhulamin-slider-block",
+	"version": "0.0.1",
+	"description": "Advanced image and content slider block for WordPress.",
+	"author": "Ruhul Amin",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"packages-update": "wp-scripts packages-update",
+		"lint": "eslint src",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"format": "wp-scripts format",
+		"start": "wp-scripts start --webpack-copy-php",
+		"build": "wp-scripts build --webpack-copy-php",
+		"i18n-pot": "wp i18n make-pot . languages/ruhulamin-slider-block.pot --exclude=\"src\" && cp ./languages/ruhulamin-slider-block.pot ./languages/ruhulamin-slider-block-en_US.po",
+		"i18n-json": "wp i18n make-json languages/ --no-purge",
+		"i18n-mo": "wp i18n make-mo languages/",
+		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"zip": "zip -r ruhulamin-slider-block.zip build includes languages public vendor index.php ruhulamin-slider-block.php readme.txt",
+		"bundle": "gulp clean && npm run lint && npm run build && npm run i18n && find . -name '.DS_Store' -delete && npm run zip"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "latest",
+		"@wordpress/blocks": "latest",
+		"@wordpress/i18n": "latest",
+		"immer": "^10.1.1",
+		"swiper": "^11.2.6"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^31.6.0",
+		"eslint-webpack-plugin": "^4.2.0"
+
+	}
+}
