@@ -80,75 +80,75 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 		<InspectorControls>
 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={tabs}>{tab => <>
 				{'general' === tab.name && <>
-					<PanelBody className='bPlPanelBody' title={__('Slides', 'ra-advanced-slider')}>
+					<PanelBody className='bPlPanelBody' title={__('Slides', 'ruhulamin-slider-block')}>
 						<ItemsPanel {...itemsProps} newItem={newSlide} ItemSettings={ItemSettings} itemLabel='Slide' design={isPremium ? 'sortable' : 'all'} />
 					</PanelBody>
 
 
-					<PanelBody title={__('Layout Settings', 'ra-advanced-slider')} {...panelBodyIF}>
+					<PanelBody title={__('Layout Settings', 'ruhulamin-slider-block')} {...panelBodyIF}>
 						<PanelRow>
-							<Label className='mb5'>{__('Columns:', 'ra-advanced-slider')}</Label>
+							<Label className='mb5'>{__('Columns:', 'ruhulamin-slider-block')}</Label>
 							<Device />
 						</PanelRow>
 						<RangeControl value={columns[device]} onChange={val => setAttributes({ columns: { ...columns, [device]: val } })} min={1} max={6} step={1} beforeIcon='grid-view' />
 
-						<Label>{__('Column Gap:', 'ra-advanced-slider')}</Label>
+						<Label>{__('Column Gap:', 'ruhulamin-slider-block')}</Label>
 						<RangeControl value={columnGap} onChange={val => setAttributes({ columnGap: val })} min={0} max={250} step={1} beforeIcon='arrow-right-alt' />
 
-						<UnitControl className='mt20' label={__('Width:', 'ra-advanced-slider')} labelPosition='left' value={sliderWidth} onChange={val => setAttributes({ sliderWidth: val })} units={[pxUnit(), perUnit(), emUnit()]} />
+						<UnitControl className='mt20' label={__('Width:', 'ruhulamin-slider-block')} labelPosition='left' value={sliderWidth} onChange={val => setAttributes({ sliderWidth: val })} units={[pxUnit(), perUnit(), emUnit()]} />
 
-						<UnitControl className='mt20' label={__('Height:', 'ra-advanced-slider')} labelPosition='left' value={sliderHeight} onChange={val => setAttributes({ sliderHeight: val })} units={[pxUnit(), emUnit(), vhUnit()]} />
+						<UnitControl className='mt20' label={__('Height:', 'ruhulamin-slider-block')} labelPosition='left' value={sliderHeight} onChange={val => setAttributes({ sliderHeight: val })} units={[pxUnit(), emUnit(), vhUnit()]} />
 					</PanelBody>
 				</>}
 
 
 				{'options' === tab.name && <>
-					<PanelBody className='bPlPanelBody' title={__('Basic Options', 'ra-advanced-slider')}>
-						<BControlPro label={__('Enable Loop', 'ra-advanced-slider')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} {...premiumProps} Component={ToggleControl} />
+					<PanelBody className='bPlPanelBody' title={__('Basic Options', 'ruhulamin-slider-block')}>
+						<BControlPro label={__('Enable Loop', 'ruhulamin-slider-block')} checked={isLoop} onChange={val => setAttributes({ isLoop: val })} {...premiumProps} Component={ToggleControl} />
 
-						<ToggleControl className='mt10' label={__('Enable Touch Move', 'ra-advanced-slider')} checked={isTouchMove} onChange={val => setAttributes({ isTouchMove: val })} />
-						<small>{__('Switch slide with grab in anywhere in slide', 'ra-advanced-slider')}</small>
-						<small>{__('Touch Move will not work in backend', 'ra-advanced-slider')}</small>
+						<ToggleControl className='mt10' label={__('Enable Touch Move', 'ruhulamin-slider-block')} checked={isTouchMove} onChange={val => setAttributes({ isTouchMove: val })} />
+						<small>{__('Switch slide with grab in anywhere in slide', 'ruhulamin-slider-block')}</small>
+						<small>{__('Touch Move will not work in backend', 'ruhulamin-slider-block')}</small>
 
-						<Label>{__('Speed (s):', 'ra-advanced-slider')}</Label>
+						<Label>{__('Speed (s):', 'ruhulamin-slider-block')}</Label>
 						<RangeControl value={speed} onChange={val => setAttributes({ speed: val })} min={0} max={10} step={.05} />
-						<small>{__('Smaller speed value will be slide faster', 'ra-advanced-slider')}</small>
+						<small>{__('Smaller speed value will be slide faster', 'ruhulamin-slider-block')}</small>
 					</PanelBody>
 
 
-					<PanelBody title={__('Autoplay', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Enable Autoplay', 'ra-advanced-slider')} checked={isAutoplay} onChange={val => setAttributes({ isAutoplay: val })} />
-						<small>{__('Autoplay will not work in backend', 'ra-advanced-slider')}</small>
+					<PanelBody title={__('Autoplay', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Enable Autoplay', 'ruhulamin-slider-block')} checked={isAutoplay} onChange={val => setAttributes({ isAutoplay: val })} />
+						<small>{__('Autoplay will not work in backend', 'ruhulamin-slider-block')}</small>
 
 						{isAutoplay && <>
-							<BControlPro className='mt20' label={__('Delay (s):', 'ra-advanced-slider')} value={autoplayOptions.delay} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, delay: val } })} min={0} max={10} step={.05} beforeIcon='visibility' {...premiumProps} Component={RangeControl} />
-							<small>{__('Smaller delay value will be autoplay faster', 'ra-advanced-slider')}</small>
+							<BControlPro className='mt20' label={__('Delay (s):', 'ruhulamin-slider-block')} value={autoplayOptions.delay} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, delay: val } })} min={0} max={10} step={.05} beforeIcon='visibility' {...premiumProps} Component={RangeControl} />
+							<small>{__('Smaller delay value will be autoplay faster', 'ruhulamin-slider-block')}</small>
 
-							<BControlPro className='mt20' label={__('Disable on Interaction', 'ra-advanced-slider')} checked={autoplayOptions.disableOnInteraction} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, disableOnInteraction: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt20' label={__('Disable on Interaction', 'ruhulamin-slider-block')} checked={autoplayOptions.disableOnInteraction} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, disableOnInteraction: val } })} {...premiumProps} Component={ToggleControl} />
 
-							<BControlPro className='mt10' label={__('Pause on Mouse Enter', 'ra-advanced-slider')} checked={autoplayOptions.pauseOnMouseEnter} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, pauseOnMouseEnter: val } })} {...premiumProps} Component={ToggleControl} />
-							<small>{__(`If 'Disable on Interaction' is also enabled, it will stop autoplay instead of pause`, 'ra-advanced-slider')}</small>
+							<BControlPro className='mt10' label={__('Pause on Mouse Enter', 'ruhulamin-slider-block')} checked={autoplayOptions.pauseOnMouseEnter} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, pauseOnMouseEnter: val } })} {...premiumProps} Component={ToggleControl} />
+							<small>{__(`If 'Disable on Interaction' is also enabled, it will stop autoplay instead of pause`, 'ruhulamin-slider-block')}</small>
 
-							<BControlPro className='mt10' label={__('Reverse Direction', 'ra-advanced-slider')} checked={autoplayOptions.reverseDirection} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, reverseDirection: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Reverse Direction', 'ruhulamin-slider-block')} checked={autoplayOptions.reverseDirection} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, reverseDirection: val } })} {...premiumProps} Component={ToggleControl} />
 
-							<BControlPro className='mt10' label={__('Stop on Last Slide', 'ra-advanced-slider')} checked={autoplayOptions.stopOnLastSlide} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, stopOnLastSlide: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Stop on Last Slide', 'ruhulamin-slider-block')} checked={autoplayOptions.stopOnLastSlide} onChange={val => setAttributes({ autoplayOptions: { ...autoplayOptions, stopOnLastSlide: val } })} {...premiumProps} Component={ToggleControl} />
 						</>}
 					</PanelBody>
 
 
-					<PanelBody title={__('Free Mode', 'ra-advanced-slider')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Free Mode', 'ra-advanced-slider')} checked={freeModeOptions.enabled} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, enabled: val } })} {...premiumProps} Component={ToggleControl} />
-						<small>{__('Smooth Scrolling with dragging the slide', 'ra-advanced-slider')}</small>
+					<PanelBody title={__('Free Mode', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<BControlPro label={__('Enable Free Mode', 'ruhulamin-slider-block')} checked={freeModeOptions.enabled} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, enabled: val } })} {...premiumProps} Component={ToggleControl} />
+						<small>{__('Smooth Scrolling with dragging the slide', 'ruhulamin-slider-block')}</small>
 						<br />
-						<small>{__('Enable Touch Move to use Free Mode', 'ra-advanced-slider')}</small>
+						<small>{__('Enable Touch Move to use Free Mode', 'ruhulamin-slider-block')}</small>
 
-						{freeModeOptions.enabled && <BControlPro className='mt10' label={__('Sticky', 'ra-advanced-slider')} checked={freeModeOptions.sticky} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, sticky: val } })} {...premiumProps} Component={ToggleControl} />}
+						{freeModeOptions.enabled && <BControlPro className='mt10' label={__('Sticky', 'ruhulamin-slider-block')} checked={freeModeOptions.sticky} onChange={val => setAttributes({ freeModeOptions: { ...freeModeOptions, sticky: val } })} {...premiumProps} Component={ToggleControl} />}
 					</PanelBody>
 
 
-					<PanelBody title={__('Effects', 'ra-advanced-slider')} {...panelBodyIF}>
+					<PanelBody title={__('Effects', 'ruhulamin-slider-block')} {...panelBodyIF}>
 						<PanelRow>
-							<Label className=''>{__('Effect:', 'ra-advanced-slider')}</Label>
+							<Label className=''>{__('Effect:', 'ruhulamin-slider-block')}</Label>
 							<SelectControlPro value={effect}
 								onChange={val => {
 									setAttributes({ effect: val });
@@ -200,97 +200,97 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 								{...premiumProps}
 							/>
 						</PanelRow>
-						<small>{__('To work fade, cube, creative, flip & cards effects properly, set single column per view.', 'ra-advanced-slider')}</small>
+						<small>{__('To work fade, cube, creative, flip & cards effects properly, set single column per view.', 'ruhulamin-slider-block')}</small>
 						<br />
-						<small>{__('Some settings may change when effect will be changed.', 'ra-advanced-slider')}</small>
+						<small>{__('Some settings may change when effect will be changed.', 'ruhulamin-slider-block')}</small>
 					</PanelBody>
 
 
-					<PanelBody title={__('Keyboard Control', 'ra-advanced-slider')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Keyboard Control', 'ra-advanced-slider')} checked={keyboardOptions.enabled} onChange={val => setAttributes({ keyboardOptions: { ...keyboardOptions, enabled: val } })}{...premiumProps} Component={ToggleControl} />
+					<PanelBody title={__('Keyboard Control', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<BControlPro label={__('Enable Keyboard Control', 'ruhulamin-slider-block')} checked={keyboardOptions.enabled} onChange={val => setAttributes({ keyboardOptions: { ...keyboardOptions, enabled: val } })}{...premiumProps} Component={ToggleControl} />
 					</PanelBody>
 
 
-					<PanelBody title={__('Mousewheel', 'ra-advanced-slider')} {...panelBodyIF}>
-						<BControlPro label={__('Enable Slide on Mousewheel', 'ra-advanced-slider')} checked={isMousewheel} onChange={val => setAttributes({ isMousewheel: val })}{...premiumProps} Component={ToggleControl} />
+					<PanelBody title={__('Mousewheel', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<BControlPro label={__('Enable Slide on Mousewheel', 'ruhulamin-slider-block')} checked={isMousewheel} onChange={val => setAttributes({ isMousewheel: val })}{...premiumProps} Component={ToggleControl} />
 					</PanelBody>
 
 
-					<PanelBody title={__('Pagination', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Show Pagination', 'ra-advanced-slider')} checked={isPage} onChange={val => setAttributes({ isPage: val })} />
+					<PanelBody title={__('Pagination', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Show Pagination', 'ruhulamin-slider-block')} checked={isPage} onChange={val => setAttributes({ isPage: val })} />
 
 						{isPage && <>
-							<BControlPro className='mt10' label={__('Show On Tablet', 'ra-advanced-slider')} checked={pageOnDevice?.tablet} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={pageOnDevice?.tablet} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
 
-							<BControlPro className='mt10' label={__('Show On Mobile', 'ra-advanced-slider')} checked={pageOnDevice?.mobile} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={pageOnDevice?.mobile} onChange={val => setAttributes({ pageOnDevice: { ...pageOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
 
-							<ToggleControl className='mt10' label={__('Enable Pagination Clickable', 'ra-advanced-slider')} checked={isPageClickable} onChange={val => setAttributes({ isPageClickable: val })} />
+							<ToggleControl className='mt10' label={__('Enable Pagination Clickable', 'ruhulamin-slider-block')} checked={isPageClickable} onChange={val => setAttributes({ isPageClickable: val })} />
 
-							<BControlPro className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ra-advanced-slider')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Enable Pagination Dynamic Bullets', 'ruhulamin-slider-block')} checked={isPageDynamic} onChange={val => setAttributes({ isPageDynamic: val })} {...premiumProps} Component={ToggleControl} />
 						</>}
 					</PanelBody>
 
 
-					<PanelBody title={__('Navigation', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Show Preview Next Button', 'ra-advanced-slider')} checked={isPrevNext} onChange={val => setAttributes({ isPrevNext: val })} />
+					<PanelBody title={__('Navigation', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Show Preview Next Button', 'ruhulamin-slider-block')} checked={isPrevNext} onChange={val => setAttributes({ isPrevNext: val })} />
 
 						{isPrevNext && <>
-							<BControlPro className='mt10' label={__('Show On Tablet', 'ra-advanced-slider')} checked={prevNextOnDevice?.tablet} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Show On Tablet', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.tablet} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, tablet: val } })} {...premiumProps} Component={ToggleControl} />
 
-							<BControlPro className='mt10' label={__('Show On Mobile', 'ra-advanced-slider')} checked={prevNextOnDevice?.mobile} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
+							<BControlPro className='mt10' label={__('Show On Mobile', 'ruhulamin-slider-block')} checked={prevNextOnDevice?.mobile} onChange={val => setAttributes({ prevNextOnDevice: { ...prevNextOnDevice, mobile: val } })} {...premiumProps} Component={ToggleControl} />
 						</>}
 					</PanelBody>
 				</>}
 
 
 				{'style' === tab.name && <>
-					<PanelBody className='bPlPanelBody' title={__('Slider', 'ra-advanced-slider')}>
-						<BControlPro label={__('Background', 'ra-advanced-slider')} value={sliderBG} onChange={val => setAttributes({ sliderBG: val })} defaults={{ color: '#0000' }} {...premiumProps} Component={Background} />
+					<PanelBody className='bPlPanelBody' title={__('Slider', 'ruhulamin-slider-block')}>
+						<BControlPro label={__('Background', 'ruhulamin-slider-block')} value={sliderBG} onChange={val => setAttributes({ sliderBG: val })} defaults={{ color: '#0000' }} {...premiumProps} Component={Background} />
 
-						<BControlPro className='mt20' label={__('Padding:', 'ra-advanced-slider')} value={sliderPadding} onChange={val => setAttributes({ sliderPadding: val })} defaults={{ vertical: '0px', horizontal: '0px' }} {...premiumProps} Component={SpaceControl} />
+						<BControlPro className='mt20' label={__('Padding:', 'ruhulamin-slider-block')} value={sliderPadding} onChange={val => setAttributes({ sliderPadding: val })} defaults={{ vertical: '0px', horizontal: '0px' }} {...premiumProps} Component={SpaceControl} />
 					</PanelBody>
 
 
-					{isPage || isPrevNext ? <PanelBody title={__('Options', 'ra-advanced-slider')} {...panelBodyIF}>
+					{isPage || isPrevNext ? <PanelBody title={__('Options', 'ruhulamin-slider-block')} {...panelBodyIF}>
 						{isPage && <>
-							<ColorControl label={__('Pagination Bullets Color:', 'ra-advanced-slider')} value={pageColor} onChange={val => setAttributes({ pageColor: val })} defaultColor='#fff' />
+							<ColorControl label={__('Pagination Bullets Color:', 'ruhulamin-slider-block')} value={pageColor} onChange={val => setAttributes({ pageColor: val })} defaultColor='#fff' />
 
-							<UnitControl className='mt20' label={__('Pagination Width:', 'ra-advanced-slider')} labelPosition='left' value={pageWidth} onChange={val => setAttributes({ pageWidth: val })} units={[pxUnit(), emUnit()]} />
+							<UnitControl className='mt20' label={__('Pagination Width:', 'ruhulamin-slider-block')} labelPosition='left' value={pageWidth} onChange={val => setAttributes({ pageWidth: val })} units={[pxUnit(), emUnit()]} />
 
-							<UnitControl className='mt20' label={__('Pagination Height:', 'ra-advanced-slider')} labelPosition='left' value={pageHeight} onChange={val => setAttributes({ pageHeight: val })} units={[pxUnit(), emUnit()]} />
+							<UnitControl className='mt20' label={__('Pagination Height:', 'ruhulamin-slider-block')} labelPosition='left' value={pageHeight} onChange={val => setAttributes({ pageHeight: val })} units={[pxUnit(), emUnit()]} />
 
-							<BorderControl label={__('Pagination Border:', 'ra-advanced-slider')} value={pageBorder} onChange={val => setAttributes({ pageBorder: val })} defaults={{ radius: '50%' }} />
+							<BorderControl label={__('Pagination Border:', 'ruhulamin-slider-block')} value={pageBorder} onChange={val => setAttributes({ pageBorder: val })} defaults={{ radius: '50%' }} />
 						</>}
 
-						{isPrevNext && <ColorControl label={__('Preview Next Button Color:', 'ra-advanced-slider')} value={prevNextColor} onChange={val => setAttributes({ prevNextColor: val })} defaultColor='#fff' />}
+						{isPrevNext && <ColorControl label={__('Preview Next Button Color:', 'ruhulamin-slider-block')} value={prevNextColor} onChange={val => setAttributes({ prevNextColor: val })} defaultColor='#fff' />}
 					</PanelBody> : ''}
 
 
-					<PanelBody title={__('Slide Title', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Show Title', 'ra-advanced-slider')} checked={isTitle} onChange={val => setAttributes({ isTitle: val })} />
+					<PanelBody title={__('Slide Title', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Show Title', 'ruhulamin-slider-block')} checked={isTitle} onChange={val => setAttributes({ isTitle: val })} />
 
 						{isTitle && <Typography value={titleTypo} onChange={val => setAttributes({ titleTypo: val })} defaults={{ fontSize: { desktop: 25, tablet: 22, mobile: 20 } }} />}
 					</PanelBody>
 
 
-					<PanelBody title={__('Slide Description', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Show Description', 'ra-advanced-slider')} checked={isDesc} onChange={val => setAttributes({ isDesc: val })} />
+					<PanelBody title={__('Slide Description', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Show Description', 'ruhulamin-slider-block')} checked={isDesc} onChange={val => setAttributes({ isDesc: val })} />
 
 						{isDesc && <Typography value={descTypo} onChange={val => setAttributes({ descTypo: val })} defaults={{ fontSize: { desktop: 15, tablet: 15, mobile: 15 } }} />}
 					</PanelBody>
 
 
-					<PanelBody title={__('Slide Button', 'ra-advanced-slider')} {...panelBodyIF}>
-						<ToggleControl label={__('Show Button', 'ra-advanced-slider')} checked={isBtn} onChange={val => setAttributes({ isBtn: val })} />
+					<PanelBody title={__('Slide Button', 'ruhulamin-slider-block')} {...panelBodyIF}>
+						<ToggleControl label={__('Show Button', 'ruhulamin-slider-block')} checked={isBtn} onChange={val => setAttributes({ isBtn: val })} />
 
 						{isBtn && <>
-							<ToggleControl className='mt10' label={__('Open link in new tab', 'ra-advanced-slider')} checked={'_blank' === linkTarget ? true : false} onChange={val => setAttributes({ linkTarget: val ? '_blank' : '' })} />
+							<ToggleControl className='mt10' label={__('Open link in new tab', 'ruhulamin-slider-block')} checked={'_blank' === linkTarget ? true : false} onChange={val => setAttributes({ linkTarget: val ? '_blank' : '' })} />
 
 							<Typography value={btnTypo} onChange={val => setAttributes({ btnTypo: val })} defaults={{ fontSize: { desktop: 16, tablet: 16, mobile: 16 } }} />
 
-							<SpaceControl className='mt20' label={__('Padding:', 'ra-advanced-slider')} value={btnPadding} onChange={val => setAttributes({ btnPadding: val })} defaults={{ vertical: '12px', horizontal: '35px' }} />
+							<SpaceControl className='mt20' label={__('Padding:', 'ruhulamin-slider-block')} value={btnPadding} onChange={val => setAttributes({ btnPadding: val })} defaults={{ vertical: '12px', horizontal: '35px' }} />
 
-							<BorderControl label={__('Border:', 'ra-advanced-slider')} value={btnBorder} onChange={val => setAttributes({ btnBorder: val })} defaults={{ radius: '3px' }} />
+							<BorderControl label={__('Border:', 'ruhulamin-slider-block')} value={btnBorder} onChange={val => setAttributes({ btnBorder: val })} defaults={{ radius: '3px' }} />
 						</>}
 					</PanelBody>
 				</>}
@@ -300,13 +300,13 @@ const Settings = ({ attributes, setAttributes, clientId, activeIndex, setActiveI
 
 		<BlockControls>
 			<ToolbarGroup className='bPlToolbar'>
-				<ToolbarButton label={__('Add New Slide', 'ra-advanced-slider')} onClick={addSlide} ><Dashicon icon='plus' /></ToolbarButton>
+				<ToolbarButton label={__('Add New Slide', 'ruhulamin-slider-block')} onClick={addSlide} ><Dashicon icon='plus' /></ToolbarButton>
 			</ToolbarGroup>
 
 			<AlignmentToolbar value={sliderAlign} onChange={val => setAttributes({ sliderAlign: val })} describedBy={__('Slider Alignment')} alignmentControls={[
-				{ title: __('Slider in left', 'ra-advanced-slider'), align: 'left', icon: 'align-left' },
-				{ title: __('Slider in center', 'ra-advanced-slider'), align: 'center', icon: 'align-center' },
-				{ title: __('Slider in right', 'ra-advanced-slider'), align: 'right', icon: 'align-right' }
+				{ title: __('Slider in left', 'ruhulamin-slider-block'), align: 'left', icon: 'align-left' },
+				{ title: __('Slider in center', 'ruhulamin-slider-block'), align: 'center', icon: 'align-center' },
+				{ title: __('Slider in right', 'ruhulamin-slider-block'), align: 'right', icon: 'align-right' }
 			]} />
 		</BlockControls>
 		<ProModal

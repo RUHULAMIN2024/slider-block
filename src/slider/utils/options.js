@@ -14,17 +14,17 @@ export const ProFeatures = [
 
 
 export const effects = [
-	{ label: __('Slide', 'ra-advanced-slider'), value: 'slide' },
-	{ label: __('Fade', 'ra-advanced-slider'), value: 'fade' },
-	{ label: __('Cube', 'ra-advanced-slider'), value: 'cube' },
-	{ label: __('Creative', 'ra-advanced-slider'), value: 'creative' },
-	{ label: __('Coverflow', 'ra-advanced-slider'), value: 'coverflow' },
-	{ label: __('Flip', 'ra-advanced-slider'), value: 'flip' },
-	{ label: __('Cards', 'ra-advanced-slider'), value: 'cards' }
+	{ label: __('Slide', 'ruhulamin-slider-block'), value: 'slide' },
+	{ label: __('Fade', 'ruhulamin-slider-block'), value: 'fade' },
+	{ label: __('Cube', 'ruhulamin-slider-block'), value: 'cube' },
+	{ label: __('Creative', 'ruhulamin-slider-block'), value: 'creative' },
+	{ label: __('Coverflow', 'ruhulamin-slider-block'), value: 'coverflow' },
+	{ label: __('Flip', 'ruhulamin-slider-block'), value: 'flip' },
+	{ label: __('Cards', 'ruhulamin-slider-block'), value: 'cards' }
 ];
 
 export const tabs = [
-	{ name: 'general', title: __('General', 'ra-advanced-slider') },
-	{ name: 'options', title: __('Options', 'ra-advanced-slider') },
-	{ name: 'style', title: __('Style', 'ra-advanced-slider') }
+	{ name: 'general', title: __('General', 'ruhulamin-slider-block') },
+	{ name: 'options', title: __('Options', 'ruhulamin-slider-block') },
+	{ name: 'style', title: __('Style', 'ruhulamin-slider-block') }
 ];
