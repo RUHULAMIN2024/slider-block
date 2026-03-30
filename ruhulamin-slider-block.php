@@ -31,16 +31,13 @@ if ( function_exists( 'raasl_fs' ) ) {
         global $raasl_fs;
 
         if ( ! isset( $raasl_fs ) ) {
-            require_once dirname( __FILE__ ) . '/vendor/freemius/start.php';
+            if ( RAASL_HAS_PRO ) {
+                require_once dirname( __FILE__ ) . '/vendor/freemius/start.php';
+            } else {
+                require_once dirname( __FILE__ ) . '/vendor/freemius-lite/start.php';
+            }
 
-			if ( ! isset( $raasl_fs ) ) {
-				if (RAASL_HAS_PRO) {
-					require_once dirname(__FILE__) . '/vendor/freemius/start.php';
-				} else {
-					require_once dirname(__FILE__) . '/vendor/freemius-lite/start.php';
-				}
-
-			$raaslConfig=array(
+			$raaslConfig = array(
                 'id'                  => '26132',
                 'slug'                => 'slider',
                 'premium_slug'        => 'slider-pro',
@@ -57,8 +54,8 @@ if ( function_exists( 'raasl_fs' ) ) {
                     'first-path'     => 'plugins.php',
                     'support'        => false,
                 ),
-            ) ;
-			$raasl_fs = RAASL_HAS_PRO ? fs_dynamic_init( $raaslConfig ):fs_lite_dynamic_init($raaslConfig);
+            );
+			$raasl_fs = RAASL_HAS_PRO ? fs_dynamic_init( $raaslConfig ) : fs_lite_dynamic_init( $raaslConfig );
         }
 
         return $raasl_fs;
@@ -73,4 +70,3 @@ if ( function_exists( 'raasl_fs' ) ) {
 require_once RAASL_DIR_PATH . 'includes/utils/functions.php';
 require_once RAASL_DIR_PATH . 'includes/plugin.php';
 }
-	}

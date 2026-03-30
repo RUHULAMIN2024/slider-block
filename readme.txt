@@ -38,7 +38,8 @@ Powered by the robust Swiper JS engine, it provides endless possibilities to cre
 
 == Development and Source Code ==
 
-The source code for this plugin is included directly within the plugin package in the `src` directory.
+The full source code and build tools for this plugin are publicly available on GitHub:
+https://github.com/RUHULAMIN2024/slider-block
 
 To regenerate the compiled assets from the source code, please follow these steps:
 1. Ensure you have Node.js and npm installed on your system.
